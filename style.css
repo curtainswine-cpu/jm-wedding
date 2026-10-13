@@ -691,3 +691,16 @@ footer {
   nav ul { gap: 16px; }
   nav a { font-size: 10px; letter-spacing: .16em; }
 }
+
+/* ============ Multi-page layout ============ */
+/* Each tab is its own page. The body is a column so the footer sits at the bottom of the window even on short pages. */
+body { min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1 0 auto; width: 100%; }
+footer { flex-shrink: 0; }
+/* On the inner pages the first block must clear the fixed menu bar (Home's hero already does). */
+main.sub > .sec:first-child,
+main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
+@media (max-width: 640px) {
+  main.sub > .sec:first-child,
+  main.sub > .rsvp-backdrop:first-child { padding-top: 140px; }
+}

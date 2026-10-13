@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RSVP &middot; Jessica &amp; Matthew</title>
+<!-- Not listed by search engines for now (still reachable by anyone who has the link). Remove this line (on every page) when you want Google to find the site. -->
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600;700&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Bodoni+Moda:ital,wght@0,500;0,600;1,500&family=Cinzel:wght@500;600&family=Marcellus&family=Prata&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header id="site-header">
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="the-day.html">The Day</a></li>
+        <li><a href="travel.html">Travel</a></li>
+        <li><a href="things-to-do.html">Things to Do</a></li>
+        <li><a href="rsvp.html" class="active" aria-current="page">RSVP</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="registry.html">Registry</a></li>
+        <li><a href="wedding-party.html">Wedding Party</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="sub">
+
+  <!-- ============================ RSVP ============================ -->
+  <!-- NOTE: This form is front-end only. To actually receive replies, connect it to a
+       form service (e.g. Formspree, Google Forms) — set the <form> action accordingly. -->
+  <!-- RSVP is ONE PERSON PER REPLY: every guest fills this in individually, so their own
+       meal choice, dietary needs and song request are recorded against their name.
+       Layout is a portrait paper invitation (scalloped edge), loosely echoing the printed invite:
+       monogram + RSVP heading, italic wording, Lartington Hall sketch, date/venue, then the form.
+       NOTE: front-end only for now. To actually receive replies, connect it to a form
+       service (e.g. Formspree, Google Forms) — see the TODO in the submit handler below. -->
+  <section class="rsvp-backdrop" id="rsvp">
+    <div class="invite-card">
+      <!-- the curved corner strokes of the notched frame (the straight lines are CSS borders, cut away at
+           each corner by masks). Drawn once for the top-left and mirrored for the other corners by CSS. -->
+      <div class="frame-orn" aria-hidden="true">
+        <span class="bc bc-tl">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor">
+            <path d="M22 1A21 21 0 0 1 1 22" stroke-width="2"/>
+            <path d="M26.1 5.5A25.5 25.5 0 0 1 5.5 26.1" stroke-width="1"/>
+            <circle cx="9" cy="9" r="1.7" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <span class="bc bc-tr">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor">
+            <path d="M22 1A21 21 0 0 1 1 22" stroke-width="2"/>
+            <path d="M26.1 5.5A25.5 25.5 0 0 1 5.5 26.1" stroke-width="1"/>
+            <circle cx="9" cy="9" r="1.7" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <span class="bc bc-bl">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor">
+            <path d="M22 1A21 21 0 0 1 1 22" stroke-width="2"/>
+            <path d="M26.1 5.5A25.5 25.5 0 0 1 5.5 26.1" stroke-width="1"/>
+            <circle cx="9" cy="9" r="1.7" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <span class="bc bc-br">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor">
+            <path d="M22 1A21 21 0 0 1 1 22" stroke-width="2"/>
+            <path d="M26.1 5.5A25.5 25.5 0 0 1 5.5 26.1" stroke-width="1"/>
+            <circle cx="9" cy="9" r="1.7" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+      </div>
+
+      <div class="card-body">
+
+        <!-- heading + wording -->
+        <div class="card-top">
+          <!-- same logo as the home page; kept in sync by the logo switcher via data-logo-sync -->
+          <img class="card-logo" data-logo-sync src="Photos/Origional logo design.jpeg" alt="Jessica &amp; Matthew monogram" />
+          <p class="sec-kicker">Kindly Reply</p>
+          <h2 class="sec-title"><em>RSVP</em></h2>
+          <hr class="divider" aria-hidden="true" />
+          <p class="card-reply-line">The pleasure of your reply is requested by <strong>15 January 2027</strong></p>
+        </div>
+
+        <!-- pen sketch of the venue, as on the printed invitation -->
+        <figure class="card-illustration">
+          <img src="lartington hall sketch.jpeg" alt="Pen sketch of Lartington Hall" />
+        </figure>
+
+        <!-- the details -->
+        <div class="card-details">
+          <p class="card-date">4<sup>th</sup> August 2027</p>
+          <svg class="card-ornament" viewBox="0 0 120 14" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+            <path d="M0 7h46M74 7h46"/>
+            <path d="M60 1.5 66.5 7 60 12.5 53.5 7Z"/>
+            <circle cx="50" cy="7" r="1.2" fill="currentColor" stroke="none"/>
+            <circle cx="70" cy="7" r="1.2" fill="currentColor" stroke="none"/>
+          </svg>
+          <p class="card-venue">Lartington Hall</p>
+          <p class="card-dress">Dress code: <em>Black Tie</em></p>
+        </div>
+
+        <!-- the reply (one person) -->
+        <div class="card-form">
+          <p class="card-note">Each guest is kindly asked to reply individually, so that we can note your own meal choice and dietary needs.</p>
+
+          <form class="rsvp-form" id="rsvp-form" novalidate>
+            <div class="guest" id="rsvp-guest">
+              <div>
+                <label for="rsvp-name">Your full name</label>
+                <input type="text" id="rsvp-name" name="name" placeholder="First and last name" autocomplete="off" />
+              </div>
+              <div class="rsvp-choice">
+                <label><input type="radio" name="attendance" value="yes" /> Joyfully accepts</label>
+                <label><input type="radio" name="attendance" value="no" /> Regretfully declines</label>
+              </div>
+              <!-- meal / dietary / song only appear once the guest has chosen "Joyfully accepts" -->
+              <div class="guest-extra">
+                <div>
+                  <label for="rsvp-meal">Meal choice</label>
+                  <select id="rsvp-meal" name="meal">
+                    <option value="">Select&hellip;</option>
+                    <option>[Main option one]</option>
+                    <option>[Main option two]</option>
+                    <option>[Vegetarian]</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="rsvp-diet">Dietary requirements</label>
+                  <textarea id="rsvp-diet" name="dietary" placeholder="Any allergies or dietary needs"></textarea>
+                </div>
+                <div>
+                  <label for="rsvp-song">Song request</label>
+                  <input type="text" id="rsvp-song" name="song" placeholder="A song to get you on the dance floor" />
+                </div>
+              </div>
+            </div>
+
+            <div class="rsvp-actions">
+              <button class="btn" type="submit">Send RSVP</button>
+              <p class="form-msg" id="rsvp-msg" role="alert" hidden></p>
+            </div>
+          </form>
+
+          <div class="rsvp-thanks" id="rsvp-thanks" hidden>
+            <h3>Thank you</h3>
+            <p id="rsvp-thanks-text"></p>
+            <button class="btn btn-ghost" type="button" id="rsvp-another">Reply for another guest</button>
+            <!-- REMOVE this note once the form is connected to a real service -->
+            <p class="preview-note">Preview only &ndash; replies aren&rsquo;t being saved yet.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- Logo comparison switcher (design aid — remove once a logo is chosen) -->
+  <div class="logo-switcher" id="logo-switcher" aria-label="Compare logo designs">
+    <span class="lbl">Logo</span>
+    <button type="button" class="active" data-logo="Photos/Origional logo design.jpeg">Cartouche</button>
+    <button type="button" data-logo="Photos/Other logo.jpeg">Rectangle</button>
+  </div>
+
+  <footer>
+    Jessica &amp; Matthew &nbsp;&bull;&nbsp; 2027
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>
