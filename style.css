@@ -1,0 +1,693 @@
+/* ============================================================
+   The Parnells — shared stylesheet
+   Used by index.html now; will be shared across all pages when
+   the site is split into separate tabs (the-day.html, travel.html, …).
+   ============================================================ */
+
+:root {
+  --ink:        #14110f;   /* near-black for text          */
+  --paper:      #faf8f4;   /* warm ivory page background   */
+  --champagne:  #e9e2d6;   /* soft neutral accent          */
+  --grey:       #8a857d;   /* muted grey for meta text     */
+  --line:       #d7d1c6;   /* hairline dividers            */
+  --names-font: "Perandory", "Prata", serif;  /* couple's names font (switchable) */
+  --hero-photo:  url("Photos/engaement%20two.jpeg");   /* landscape engagement photo */
+  --story-photo: url("Photos/engagement%20rings.jpeg"); /* Our Story initial photo (rings) */
+}
+
+/* Perandory — premium font (not on Google Fonts). Add the file to a Fonts/ folder
+   as Perandory.woff2 / .otf / .ttf and it will load; falls back to Prata until then. */
+@font-face {
+  font-family: "Perandory";
+  src: local("Perandory"),
+       url("Fonts/Perandory.woff2") format("woff2"),
+       url("Fonts/Perandory.otf")   format("opentype"),
+       url("Fonts/Perandory.ttf")   format("truetype");
+  font-display: swap;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Jost", sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.7;
+}
+
+/* ---------- Top navigation ---------- */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  padding: 22px 24px;
+  background: rgba(250, 248, 244, 0.82);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .4s ease, padding .4s ease;
+}
+header.scrolled { border-color: var(--line); padding: 14px 24px; }
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-weight: 400;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color .3s ease;
+}
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 0; height: 1px;
+  background: var(--ink);
+  transition: width .35s ease;
+}
+nav a:hover { color: #000; }
+nav a:hover::after { width: 100%; }
+/* active page link (for the multi-page version) */
+nav a.active { color: #000; }
+nav a.active::after { width: 100%; }
+
+/* ---------- Hero ---------- */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 150px 24px 84px;
+}
+.hero.hero-top { padding-bottom: 46px; }
+.hero.hero-bottom { padding-top: 30px; }
+
+/* Countdown over full-width Lartington Hall photo */
+.countdown-band {
+  width: 100%;
+  position: relative;
+  min-height: clamp(340px, 52vh, 480px);
+  padding: 40px 24px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background:
+    linear-gradient(rgba(18,15,13,.45), rgba(18,15,13,.45)),
+    url("Photos/Lartington%20hall%20photo.jpg") center 32%/cover no-repeat;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.countdown-band .countdown { margin-top: 0; }
+.countdown-band .countdown .num { color: #fff; }
+.countdown-band .countdown .lbl { color: #fff; font-weight: 600; }
+.countdown-band .venue-line {
+  position: absolute; left: 0; right: 0; bottom: 26px;
+  color: #fff; margin: 0; text-align: center;
+}
+
+/* ---------- Monogram logo (Jessica & Matthew) ---------- */
+.logo {
+  width: clamp(210px, 32vw, 310px);
+  height: auto;
+  color: var(--ink);
+  margin-bottom: 30px;
+  mix-blend-mode: multiply; /* drops the white image background onto ivory */
+}
+
+/* Design aids (logo + names-font switchers) only show while working locally or with ?design in the address —
+   see the "design-mode" script at the top of index.html. Visitors to the live site never see them. */
+/* (:not(.design-mode) makes this rule more specific than the switchers' own display:flex further down) */
+html:not(.design-mode) .logo-switcher,
+html:not(.design-mode) .font-switcher { display: none; }
+
+/* logo comparison switcher (design aid) */
+.logo-switcher {
+  position: fixed; right: 16px; bottom: 16px; z-index: 100;
+  display: flex; gap: 8px; align-items: center;
+  background: rgba(250, 248, 244, .94);
+  border: 1px solid var(--line); padding: 9px 11px;
+  box-shadow: 0 2px 14px rgba(0,0,0,.07);
+  font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+}
+.logo-switcher .lbl { color: var(--grey); }
+.logo-switcher button {
+  font: inherit; letter-spacing: .18em; text-transform: uppercase;
+  border: 1px solid var(--line); background: none; color: var(--ink);
+  padding: 5px 9px; cursor: pointer; transition: all .2s ease;
+}
+.logo-switcher button:hover { border-color: var(--grey); }
+.logo-switcher button.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* names-font switcher (design aid) */
+.font-switcher {
+  position: fixed; left: 16px; bottom: 16px; z-index: 100;
+  display: flex; gap: 8px; align-items: center; flex-wrap: wrap; max-width: 62vw;
+  background: rgba(250, 248, 244, .94);
+  border: 1px solid var(--line); padding: 9px 11px;
+  box-shadow: 0 2px 14px rgba(0,0,0,.07);
+  font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+}
+.font-switcher .lbl { color: var(--grey); }
+.font-switcher button {
+  font: inherit; letter-spacing: .18em; text-transform: uppercase;
+  border: 1px solid var(--line); background: none; color: var(--ink);
+  padding: 5px 9px; cursor: pointer; transition: all .2s ease;
+}
+.font-switcher button:hover { border-color: var(--grey); }
+.font-switcher button.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.logo .frame { fill: none; stroke: currentColor; stroke-width: 1; }
+.logo .num {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 19px;
+  letter-spacing: .14em;
+  fill: currentColor;
+}
+.logo .mono { font-family: "Pinyon Script", cursive; fill: currentColor; }
+.logo .mono-j { font-size: 34px; }
+.logo .mono-m { font-size: 40px; }
+
+.names {
+  font-family: var(--names-font);
+  font-weight: 500;
+  font-size: clamp(36px, 7vw, 80px);
+  letter-spacing: .04em;
+  line-height: 1.1;
+  margin-bottom: 26px;
+  text-transform: uppercase;
+  transform: scaleX(var(--names-sx, 1)) scaleY(var(--names-sy, 1));
+  transform-origin: center;
+}
+.names .amp {
+  font-style: italic;
+  font-weight: 400;
+  display: inline-block;
+  margin: 0 .12em;
+}
+
+.meta {
+  font-size: 13px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 6px;
+}
+.meta .dot { margin: 0 12px; opacity: .5; }
+
+/* ---------- Hero (Brian & Megan style) ---------- */
+.hero .bigdate {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  font-size: clamp(34px, 5.6vw, 62px);
+  letter-spacing: .08em;
+  line-height: 1;
+  margin: 8px 0 6px;
+}
+.hero .bigdate .sep { margin: 0 .3em; color: var(--grey); }
+
+.venue-line {
+  font-size: 12px; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--grey); margin-bottom: 30px;
+}
+
+.hero-gallery {
+  display: flex; align-items: center; justify-content: center;
+  gap: clamp(12px, 3vw, 30px); margin: 4px 0 28px; width: 100%;
+}
+.hero-gallery .flank {
+  width: clamp(90px, 13vw, 140px); aspect-ratio: 3 / 4; flex: none;
+  background-size: cover; background-position: center;
+  filter: grayscale(100%) contrast(1.02);
+  border: 1px solid var(--line);
+  display: none; /* shown by JS only if hero-left/right.jpg exist */
+}
+.hero-center { margin: 0; flex: none; width: clamp(260px, 56vw, 440px); }
+.hero-center .photo {
+  width: 100%; aspect-ratio: 16 / 12;
+  background:
+    linear-gradient(0deg, rgba(20,17,15,.06), rgba(20,17,15,.06)),
+    var(--hero-photo) center/cover no-repeat,
+    var(--champagne);
+  filter: grayscale(100%) contrast(1.02);
+  border: 1px solid var(--line);
+}
+.hero .tagline {
+  max-width: 520px; font-size: 13px; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--grey); line-height: 2;
+  margin: 0 auto;
+}
+
+/* ---------- Fine-line divider ---------- */
+.divider {
+  width: 64px;
+  height: 1px;
+  background: var(--line);
+  border: 0;
+  margin: 36px 0 32px;
+}
+
+/* ---------- Countdown ---------- */
+.countdown {
+  display: flex;
+  gap: clamp(20px, 5vw, 54px);
+  margin-top: 4px;
+}
+.countdown .unit { text-align: center; }
+.countdown .num {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 500;
+  line-height: 1;
+}
+.countdown .lbl {
+  font-size: 10px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-top: 8px;
+}
+
+.scroll-cue {
+  margin-top: 64px;
+  font-size: 10px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--grey);
+  animation: float 2.6s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+/* ---------- Hero photo band ---------- */
+.hero-photo {
+  width: 100%;
+  height: 78vh;
+  background:
+    linear-gradient(0deg, rgba(20,17,15,.08), rgba(20,17,15,.08)),
+    var(--hero-photo) center/cover no-repeat,
+    var(--champagne);
+  filter: grayscale(100%) contrast(1.02);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-photo .placeholder {
+  font-size: 11px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--grey);
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* ---------- Our Story (clean editorial) ---------- */
+.story { max-width: 1040px; margin: 0 auto; padding: 120px 24px 100px; text-align: center; }
+
+/* two-column row: ring photo left, writing right */
+.story .story-row {
+  display: grid; grid-template-columns: 0.8fr 1fr;
+  gap: clamp(28px, 5vw, 64px); align-items: start;
+  text-align: left; max-width: 980px; margin: 8px auto 0;
+}
+.story .story-figure { margin: 0; max-width: none; position: sticky; top: 110px; align-self: start; }
+.story .story-row .photo { height: auto; aspect-ratio: 4 / 5; width: 100%; }
+.story .story-row .prose { max-width: none; margin: 0; text-align: left; font-size: 15px; }
+@media (max-width: 760px) {
+  .story .story-row { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+  .story .story-row .prose { text-align: center; }
+  .story .story-figure { position: static; top: auto; }
+}
+
+.story .kicker {
+  font-size: 11px; letter-spacing: .34em; text-transform: uppercase;
+  color: var(--grey); margin-bottom: 20px;
+}
+.story .section-title { font-family: "Cormorant Garamond", serif; line-height: 1; }
+.story .section-title .t-our {
+  display: block; text-transform: uppercase;
+  font-size: clamp(18px, 2.6vw, 26px); font-weight: 500;
+  letter-spacing: .36em; margin-bottom: 4px;
+}
+.story .section-title .t-story {
+  display: block; font-style: italic; font-weight: 500;
+  font-size: clamp(46px, 9vw, 92px); letter-spacing: .01em;
+}
+.story .divider { margin: 28px auto 44px; }
+
+/* photo carousel */
+.story .carousel {
+  display: flex; align-items: center; justify-content: center;
+  gap: clamp(8px, 3vw, 26px); margin-bottom: 42px;
+}
+.story .arrow {
+  background: none; border: 0; cursor: pointer;
+  font-family: "Cormorant Garamond", serif; font-size: 42px; line-height: 1;
+  color: var(--grey); padding: 0 4px; transition: color .25s ease; user-select: none;
+}
+.story .arrow:hover { color: var(--ink); }
+.story figure { margin: 0; max-width: 360px; width: 100%; }
+.story .photo {
+  height: 440px;
+  background:
+    linear-gradient(0deg, rgba(20,17,15,.06), rgba(20,17,15,.06)),
+    var(--story-photo) center/cover no-repeat,
+    var(--champagne);
+  filter: grayscale(100%) contrast(1.02);
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+}
+.story .photo .placeholder {
+  font-size: 10px; letter-spacing: .26em; text-transform: uppercase;
+  color: var(--grey); text-align: center; padding: 0 18px;
+}
+.story figcaption {
+  font-size: 10px; letter-spacing: .24em; text-transform: uppercase;
+  color: var(--grey); margin-top: 12px;
+}
+
+.story .prose {
+  max-width: 600px; margin: 0 auto;
+  font-size: 16px; line-height: 1.95; color: var(--ink);
+}
+.story .prose p { margin-bottom: 18px; }
+.story .prose p:last-child { margin-bottom: 0; }
+
+.story .pets { margin: 56px auto 0; max-width: 440px; }
+.story .pets img {
+  width: 100%; height: auto; display: block;
+  mix-blend-mode: multiply; /* drops white background onto ivory */
+}
+.story .pets figcaption {
+  font-size: 10px; letter-spacing: .24em; text-transform: uppercase;
+  color: var(--grey); margin-top: 10px;
+}
+
+/* ---------- Closing cover photo (proposal) ---------- */
+.cover-photo {
+  width: 100%;
+  height: clamp(380px, 72vh, 700px);
+  background:
+    linear-gradient(0deg, rgba(20,17,15,.10), rgba(20,17,15,.10)),
+    var(--hero-photo) center/cover no-repeat,
+    var(--champagne);
+  filter: grayscale(100%) contrast(1.02);
+  border-top: 1px solid var(--line);
+}
+
+/* ============ Shared section styles ============ */
+.sec { max-width: 1040px; margin: 0 auto; padding: 100px 24px; }
+.sec-kicker { font-size: 11px; letter-spacing: .34em; text-transform: uppercase; color: var(--grey); text-align: center; margin-bottom: 18px; }
+.sec-title { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: clamp(36px, 6vw, 64px); line-height: 1; letter-spacing: .01em; text-align: center; }
+.sec-title em { font-style: italic; font-weight: 400; }
+.sec-head .divider { margin: 26px auto 50px; }
+.sec-intro { max-width: 600px; margin: 0 auto 44px; text-align: center; font-size: 15px; line-height: 1.9; color: var(--ink); }
+
+/* The Day — schedule timeline */
+.timeline { max-width: 540px; margin: 0 auto; }
+.tl-item { text-align: center; padding: 24px 0; border-bottom: 1px solid var(--line); }
+.tl-item:last-child { border-bottom: 0; }
+.tl-time { font-family: "Cormorant Garamond", serif; font-size: clamp(26px,4vw,34px); font-weight: 500; line-height: 1; }
+.tl-label { font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--grey); margin-top: 9px; }
+.tl-note { font-size: 13px; color: var(--ink); opacity: .8; margin-top: 6px; }
+
+/* Info grid (Travel, Things to Do) */
+.info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px clamp(28px,5vw,56px); }
+.info-card h3 { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 25px; margin-bottom: 12px; }
+.info-card p { font-size: 14.5px; line-height: 1.8; color: var(--ink); }
+.info-card .link { display: inline-block; margin-top: 14px; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 3px; text-decoration: none; transition: border-color .25s; }
+.info-card .link:hover { border-color: var(--ink); }
+.note-banner { text-align: center; margin-top: 46px; font-size: 13.5px; letter-spacing: .02em; color: var(--ink); }
+.note-banner strong { font-weight: 500; }
+@media (max-width: 680px) { .info-grid { grid-template-columns: 1fr; } }
+
+/* ============ RSVP — portrait paper invitation ============ */
+/* Soft champagne backdrop so the card reads as a sheet of paper laid on a table */
+.rsvp-backdrop {
+  background: var(--champagne);
+  padding: 96px 24px 110px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.invite-card {
+  --r: 16px;                                /* scallop radius */
+  --paper: #fffdf9;                         /* warm paper white, a touch lighter than the page */
+  --frame: #14110f;                         /* black detailing */
+  --fi: calc(var(--r) + 12px);              /* inset of the outer frame line from the card edge */
+  --g: 5px;                                 /* gap between the double rules */
+  position: relative;
+  max-width: 620px; margin: 0 auto;         /* portrait invitation */
+  padding: calc(64px + var(--r)) calc(clamp(28px, 8vw, 62px) + var(--r)) calc(60px + var(--r));
+  text-align: center;
+  /* Scalloped edge: the paper body is inset by one radius, and a row of half-circles is
+     drawn along each side. `round` fits a whole number of scallops at any width. */
+  background:
+    linear-gradient(var(--paper), var(--paper)) center / calc(100% - 2 * var(--r) + 1px) calc(100% - 2 * var(--r) + 1px) no-repeat,
+    radial-gradient(circle at 50% 100%, var(--paper) calc(var(--r) - .6px), transparent var(--r)) top left   / calc(2 * var(--r)) var(--r) round no-repeat,
+    radial-gradient(circle at 50% 0%,   var(--paper) calc(var(--r) - .6px), transparent var(--r)) bottom left / calc(2 * var(--r)) var(--r) round no-repeat,
+    radial-gradient(circle at 100% 50%, var(--paper) calc(var(--r) - .6px), transparent var(--r)) top left   / var(--r) calc(2 * var(--r)) no-repeat round,
+    radial-gradient(circle at 0% 50%,   var(--paper) calc(var(--r) - .6px), transparent var(--r)) top right  / var(--r) calc(2 * var(--r)) no-repeat round;
+  /* A fine black outline hugging the scalloped edge (four 1px offset shadows = a 1px dilation of
+     the shape), then a soft shadow. drop-shadow (not box-shadow) so both follow the scallops. */
+  filter:
+    drop-shadow(1px 0 0 var(--frame)) drop-shadow(-1px 0 0 var(--frame))
+    drop-shadow(0 1px 0 var(--frame)) drop-shadow(0 -1px 0 var(--frame))
+    drop-shadow(0 18px 24px rgba(20,17,15,.15));
+}
+/* BLACK double rule, inset like a printed invitation (clear of the scallops):
+   a heavier outer line (::before) and a finer inner line (::after), --g apart. */
+.invite-card::before, .invite-card::after {
+  content: ""; position: absolute; pointer-events: none;
+}
+.invite-card::before { inset: var(--fi); border: 2px solid var(--frame); }
+.invite-card::after  { inset: calc(var(--fi) + var(--g)); border: 1px solid var(--frame); }
+
+/* Notched corners (echoing the monogram's notched frame): each corner is cut out of the two lines
+   with masks, and a matching pair of curved strokes (SVG, below) is drawn in the gap. */
+.invite-card::before {
+  /* hide the outer line inside a 21px circle at each corner (centred on the line's corner, 1px in) */
+  -webkit-mask-image:
+    radial-gradient(circle at 1px 1px,                                   transparent 21px, #000 21.5px),
+    radial-gradient(circle at calc(100% - 1px) 1px,                      transparent 21px, #000 21.5px),
+    radial-gradient(circle at 1px calc(100% - 1px),                      transparent 21px, #000 21.5px),
+    radial-gradient(circle at calc(100% - 1px) calc(100% - 1px),         transparent 21px, #000 21.5px);
+          mask-image:
+    radial-gradient(circle at 1px 1px,                                   transparent 21px, #000 21.5px),
+    radial-gradient(circle at calc(100% - 1px) 1px,                      transparent 21px, #000 21.5px),
+    radial-gradient(circle at 1px calc(100% - 1px),                      transparent 21px, #000 21.5px),
+    radial-gradient(circle at calc(100% - 1px) calc(100% - 1px),         transparent 21px, #000 21.5px);
+  -webkit-mask-composite: source-in;
+          mask-composite: intersect;
+}
+.invite-card::after {
+  /* same circles, but centred on the OUTER line's corner (4px out from this inner box) and 4.5px bigger,
+     so the two cut-outs are concentric parallel curves */
+  -webkit-mask-image:
+    radial-gradient(circle at -4px -4px,                                 transparent 25.5px, #000 26px),
+    radial-gradient(circle at calc(100% + 4px) -4px,                     transparent 25.5px, #000 26px),
+    radial-gradient(circle at -4px calc(100% + 4px),                     transparent 25.5px, #000 26px),
+    radial-gradient(circle at calc(100% + 4px) calc(100% + 4px),         transparent 25.5px, #000 26px);
+          mask-image:
+    radial-gradient(circle at -4px -4px,                                 transparent 25.5px, #000 26px),
+    radial-gradient(circle at calc(100% + 4px) -4px,                     transparent 25.5px, #000 26px),
+    radial-gradient(circle at -4px calc(100% + 4px),                     transparent 25.5px, #000 26px),
+    radial-gradient(circle at calc(100% + 4px) calc(100% + 4px),         transparent 25.5px, #000 26px);
+  -webkit-mask-composite: source-in;
+          mask-composite: intersect;
+}
+
+/* the curved corner strokes: one SVG drawn for the top-left, mirrored for the other three corners */
+.frame-orn { position: absolute; inset: 0; pointer-events: none; color: var(--frame); }
+.frame-orn .bc { position: absolute; width: 40px; height: 40px; }
+.frame-orn .bc svg { position: absolute; inset: 0; overflow: visible; }
+.frame-orn .bc-tl { top: var(--fi);    left:  var(--fi); }
+.frame-orn .bc-tr { top: var(--fi);    right: var(--fi);  transform: scaleX(-1); }
+.frame-orn .bc-bl { bottom: var(--fi); left:  var(--fi); transform: scaleY(-1); }
+.frame-orn .bc-br { bottom: var(--fi); right: var(--fi);  transform: scale(-1, -1); }
+
+/* NB: .card-body must NOT get a z-index (a stacking context would stop the logo's multiply
+   blend seeing the paper) */
+.card-body { position: relative; }
+
+/* --- heading + wording --- */
+.invite-card .card-logo {
+  width: clamp(120px, 26vw, 160px); height: auto;
+  mix-blend-mode: multiply;                 /* drops the logo's white background onto the paper */
+  filter: contrast(1.18) brightness(1.06);  /* lifts the JPEG's off-white to pure white so no faint box shows */
+  margin: 0 auto 6px; display: block;
+}
+.invite-card .sec-kicker { margin-bottom: 12px; }
+.invite-card .sec-title { font-size: clamp(36px, 8vw, 54px); }
+.invite-card .divider { margin: 22px auto 22px; }
+.card-reply-line {
+  max-width: 400px; margin: 0 auto;
+  font-family: "Cormorant Garamond", serif; font-style: italic;
+  font-size: clamp(19px, 3.6vw, 23px); line-height: 1.5;
+}
+.card-reply-line strong { font-weight: 600; white-space: nowrap; }   /* keep "15 January 2027" together */
+
+/* --- the sketch, as the centrepiece (like the printed invitation) --- */
+.card-illustration { margin: 30px -8px 22px; }
+.card-illustration img {
+  display: block; width: 100%; height: auto;
+  aspect-ratio: 2.1 / 1; object-fit: cover; object-position: center 56%;   /* trims the sketch's empty top/bottom */
+  mix-blend-mode: multiply;                 /* drops the sketch's white paper onto the card */
+  /* feathered edge instead of a hard rectangle */
+  -webkit-mask-image: radial-gradient(ellipse 74% 72% at 50% 52%, #000 60%, transparent 100%);
+          mask-image: radial-gradient(ellipse 74% 72% at 50% 52%, #000 60%, transparent 100%);
+}
+
+/* --- date / venue / dress code --- */
+.card-details { display: grid; justify-items: center; margin-bottom: 38px; }
+.card-date {
+  font-family: "Cormorant Garamond", serif; font-weight: 500;
+  font-variant: small-caps; letter-spacing: .05em; line-height: 1.1;
+  font-size: clamp(26px, 5.4vw, 32px);
+}
+.card-date sup { font-size: .55em; line-height: 0; vertical-align: .75em; }
+.card-ornament { width: 116px; height: auto; color: var(--grey); margin: 14px 0 12px; }
+.card-venue {
+  font-family: "Cormorant Garamond", serif; font-weight: 500;
+  font-variant: small-caps; letter-spacing: .07em; line-height: 1.2;
+  font-size: clamp(21px, 4.4vw, 26px);
+}
+.card-dress {
+  margin-top: 6px;
+  font-family: "Cormorant Garamond", serif; font-size: clamp(17px, 3.4vw, 19px);
+}
+.card-dress em { font-style: italic; }
+
+/* --- the reply --- */
+.card-form { border-top: 1px solid var(--line); padding-top: 34px; }
+.card-note { max-width: 400px; margin: 0 auto 30px; font-size: 13.5px; line-height: 1.85; color: var(--ink); opacity: .78; }
+
+/* the form */
+.rsvp-form { display: grid; gap: 30px; text-align: left; }
+.rsvp-form[hidden] { display: none; }        /* `display:grid` above would otherwise override [hidden] */
+.rsvp-form label { display: block; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--grey); margin-bottom: 9px; }
+.rsvp-form input[type=text], .rsvp-form select, .rsvp-form textarea {
+  width: 100%; font: inherit; font-size: 15px; color: var(--ink);
+  background: transparent; border: 0; border-bottom: 1px solid var(--line);
+  padding: 8px 2px; outline: none; border-radius: 0; transition: border-color .25s;
+}
+.rsvp-form input:focus, .rsvp-form select:focus, .rsvp-form textarea:focus { border-color: var(--ink); }
+.rsvp-form textarea { resize: vertical; min-height: 58px; }
+.rsvp-form input[type=radio] { accent-color: var(--ink); }
+
+/* one person per reply */
+.guest { display: grid; gap: 24px; }
+.guest.has-error input[type=text] { border-bottom-color: #9a4a3a; }
+.rsvp-choice { display: flex; gap: 12px 28px; justify-content: center; flex-wrap: wrap; }
+.rsvp-choice label { display: inline-flex; align-items: center; gap: 8px; text-transform: none; letter-spacing: .03em; font-size: 14px; color: var(--ink); margin: 0; cursor: pointer; }
+/* meal / dietary / song only appear once that guest is attending */
+.guest-extra { display: none; gap: 24px; }
+.guest.is-yes .guest-extra { display: grid; }
+
+.rsvp-actions { display: grid; justify-items: center; gap: 16px; margin-top: 4px; }
+.btn {
+  justify-self: center; cursor: pointer;
+  font: inherit; font-size: 11px; letter-spacing: .24em; text-transform: uppercase;
+  color: var(--paper); background: var(--ink); border: 1px solid var(--ink);
+  padding: 14px 42px; transition: opacity .25s;
+}
+.btn:hover { opacity: .85; }
+.btn:disabled { opacity: .5; cursor: default; }
+.btn-ghost { background: transparent; color: var(--ink); padding: 11px 26px; }
+.btn-ghost:hover { opacity: 1; background: rgba(20,17,15,.05); }
+.form-msg { text-align: center; color: var(--ink); font-size: 14px; }
+.form-msg.error { color: #9a4a3a; }
+
+/* thank-you state */
+.rsvp-thanks { padding: 8px 0 4px; }
+.rsvp-thanks h3 { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; font-size: clamp(28px, 5vw, 38px); margin-bottom: 14px; }
+.rsvp-thanks p { font-size: 15px; line-height: 1.9; }
+.rsvp-thanks .preview-note { margin-top: 22px; font-size: 11px; letter-spacing: .12em; color: var(--grey); }
+.rsvp-thanks .btn-ghost { margin-top: 26px; }
+
+@media (max-width: 560px) {
+  .rsvp-backdrop { padding: 56px 14px 70px; }
+  .invite-card {
+    --r: 11px;
+    padding-top: calc(52px + var(--r)); padding-bottom: calc(48px + var(--r));
+    padding-left: calc(30px + var(--r)); padding-right: calc(30px + var(--r));
+  }
+  .invite-card { --fi: calc(var(--r) + 8px); }   /* frame sits a little closer to the edge on phones */
+}
+
+/* FAQ */
+.faq-list { max-width: 720px; margin: 0 auto; }
+.faq-list details { border-bottom: 1px solid var(--line); }
+.faq-list summary { list-style: none; cursor: pointer; padding: 20px 0; font-family: "Cormorant Garamond", serif; font-size: 22px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { content: "+"; font-family: "Jost", sans-serif; font-size: 20px; font-weight: 300; color: var(--grey); }
+.faq-list details[open] summary::after { content: "\2013"; }
+.faq-list details p { font-size: 14.5px; line-height: 1.8; color: var(--ink); padding: 0 0 22px; max-width: 94%; }
+
+/* Registry */
+.registry-msg { max-width: 580px; margin: 0 auto; text-align: center; }
+.registry-msg .quote { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: clamp(22px,3.5vw,30px); line-height: 1.45; margin-bottom: 26px; }
+.registry-msg p { font-size: 15px; line-height: 1.9; color: var(--ink); }
+
+/* Wedding party */
+/* Rows are centred, so a short last row (e.g. 7 bridesmaids = 3+3+1) sits in the middle instead of hugging the left. */
+.party-grid { --pg: clamp(28px,4vw,48px); display: flex; flex-wrap: wrap; justify-content: center; gap: calc(var(--pg) * 1.1) var(--pg); }
+.party-card { text-align: center; flex: 0 0 calc((100% - 2 * var(--pg)) / 3); max-width: calc((100% - 2 * var(--pg)) / 3); }
+.party-photo { position: relative; overflow: hidden; width: 100%; aspect-ratio: 3/4; background: var(--champagne); border: 1px solid var(--line); display:flex; align-items:center; justify-content:center; filter: grayscale(100%); }
+.party-photo span { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--grey); }
+/* Photo fitting. Per person, set on the <img> style:  --z zoom (1 = none),  --fx/--fy where the face is
+   (% across/down the photo box),  --ty where to place the face vertically (default 42%).
+   The translate is clamped so the zoomed photo can never leave a gap at the card's edges. */
+.party-photo img {
+  --z: 1; --fx: 50%; --fy: 50%; --ty: 42%;
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 50%;
+  transform:
+    translate(
+      clamp(calc(-50% * (var(--z) - 1)), calc(50% - (50% + (var(--fx) - 50%) * var(--z))), calc(50% * (var(--z) - 1))),
+      clamp(calc(-50% * (var(--z) - 1)), calc(var(--ty) - (50% + (var(--fy) - 50%) * var(--z))), calc(50% * (var(--z) - 1)))
+    )
+    scale(var(--z));
+}
+.party-name { font-family: "Cormorant Garamond", serif; font-size: 25px; margin-top: 16px; }
+.party-role { font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: var(--grey); margin-top: 5px; }
+.party-desc { font-size: 13.5px; line-height: 1.7; color: var(--ink); opacity:.85; margin-top: 11px; }
+.party-subhead { text-align: center; font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; font-size: clamp(24px,3.5vw,30px); margin: 64px 0 36px; }
+/* "pairs" group (the four parents): two across on anything wider than a phone, so each couple's parents share a row */
+@media (min-width: 461px) {
+  .party-grid--pairs { max-width: 640px; margin-left: auto; margin-right: auto; }
+  .party-grid--pairs .party-card { flex-basis: calc((100% - var(--pg)) / 2); max-width: calc((100% - var(--pg)) / 2); }
+}
+/* "solo" group (Maid of Honour, Best Man): one centred card, a little wider than the grid cards so a long blurb reads comfortably;
+   it shrinks to fit on a phone */
+.party-grid--solo .party-card { flex: 0 1 380px; max-width: 380px; }
+.sec-head + .party-subhead { margin-top: 0; }   /* first subhead sits right under the section title */
+@media (max-width: 760px){ .party-card { flex-basis: calc((100% - var(--pg)) / 2); max-width: calc((100% - var(--pg)) / 2); } }
+@media (max-width: 460px){ .party-card { flex-basis: 100%; max-width: 100%; } }
+
+
+footer {
+  text-align: center;
+  padding: 40px 24px;
+  font-size: 11px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+.toggle { display:block; margin-top: 14px; }
+.toggle a { color: var(--grey); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+.toggle a:hover { color: var(--ink); }
+
+@media (max-width: 640px) {
+  nav ul { gap: 16px; }
+  nav a { font-size: 10px; letter-spacing: .16em; }
+}

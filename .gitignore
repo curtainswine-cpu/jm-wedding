@@ -1,0 +1,31 @@
+# Default-deny: only the files the live website needs are published (see whitelist below).
+# Everything else in this folder (notes, backups, drafts, reference images, the dark draft) stays private.
+/*
+!/.gitignore
+!/.nojekyll
+!/index.html
+!/style.css
+!/lartington hall sketch.jpeg
+
+!/Photos/
+/Photos/*
+!/Photos/Lartington hall photo.jpg
+!/Photos/Origional logo design.jpeg
+!/Photos/Other logo.jpeg
+!/Photos/engaement two.jpeg
+!/Photos/engagement rings.jpeg
+!/Photos/margot and mabel sketch.jpeg
+
+!/Wedding party images/
+/Wedding party images/*
+!/Wedding party images/Georgina- sister of bride.jpeg
+!/Wedding party images/Hannah bridesmaid.jpeg
+!/Wedding party images/Jess and Rebecca.jpeg
+!/Wedding party images/Kirsten maid of honor.jpeg
+!/Wedding party images/Melody-bridesmaid.jpeg
+!/Wedding party images/Molly -bridesmaid.jpeg
+!/Wedding party images/jess and anthony 1.jpeg
+!/Wedding party images/jess s 2 bridesmaid.jpeg
+!/Wedding party images/matt and sarah.jpeg
+!/Wedding party images/matt with stephen 2.jpeg
+!/Wedding party images/sarah bridesmaid.jpeg
