@@ -124,7 +124,6 @@ nav a.active::after { width: 100%; }
   height: auto;
   color: var(--ink);
   margin-bottom: 30px;
-  mix-blend-mode: multiply; /* drops the white image background onto ivory */
 }
 
 /* Design aids (logo + names-font switchers) only show while working locally or with ?design in the address —
@@ -387,7 +386,6 @@ html:not(.design-mode) .font-switcher { display: none; }
 .story .pets { margin: 56px auto 0; max-width: 440px; }
 .story .pets img {
   width: 100%; height: auto; display: block;
-  mix-blend-mode: multiply; /* drops white background onto ivory */
 }
 .story .pets figcaption {
   font-size: 10px; letter-spacing: .24em; text-transform: uppercase;
@@ -523,8 +521,6 @@ html:not(.design-mode) .font-switcher { display: none; }
 /* --- heading + wording --- */
 .invite-card .card-logo {
   width: clamp(120px, 26vw, 160px); height: auto;
-  mix-blend-mode: multiply;                 /* drops the logo's white background onto the paper */
-  filter: contrast(1.18) brightness(1.06);  /* lifts the JPEG's off-white to pure white so no faint box shows */
   margin: 0 auto 6px; display: block;
 }
 .invite-card .sec-kicker { margin-bottom: 12px; }
@@ -542,7 +538,6 @@ html:not(.design-mode) .font-switcher { display: none; }
 .card-illustration img {
   display: block; width: 100%; height: auto;
   aspect-ratio: 2.1 / 1; object-fit: cover; object-position: center 56%;   /* trims the sketch's empty top/bottom */
-  mix-blend-mode: multiply;                 /* drops the sketch's white paper onto the card */
   /* feathered edge instead of a hard rectangle */
   -webkit-mask-image: radial-gradient(ellipse 74% 72% at 50% 52%, #000 60%, transparent 100%);
           mask-image: radial-gradient(ellipse 74% 72% at 50% 52%, #000 60%, transparent 100%);
