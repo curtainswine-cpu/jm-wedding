@@ -738,8 +738,8 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 
 /* FAQ search */
 .faq-search { max-width: 720px; margin: 0 auto 28px; }
-.faq-search-label { display: block; font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--grey); margin-bottom: 10px; }
-.faq-search input { width: 100%; box-sizing: border-box; font: 300 16px "Jost", sans-serif; color: var(--ink); background: transparent; border: 1px solid var(--line); padding: 14px 16px; border-radius: 0; outline: none; -webkit-appearance: none; appearance: none; transition: border-color .25s; }
+.faq-search-label { display: block; text-align: center; font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--grey); margin-bottom: 10px; }
+.faq-search input { width: 100%; box-sizing: border-box; font: 300 16px "Jost", sans-serif; color: var(--ink); background: transparent; border: 1px solid var(--line); padding: 15px 26px; border-radius: 999px; outline: none; -webkit-appearance: none; appearance: none; transition: border-color .25s; }
 .faq-search input:focus { border-color: var(--ink); }
 .faq-search input::placeholder { color: var(--grey); }
 .faq-status { min-height: 18px; margin-top: 8px; font-size: 12px; letter-spacing: .08em; color: var(--grey); }
@@ -770,3 +770,5 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 #todo .sec-intro { margin-bottom: 0; }
 .sec--after-band { padding-top: 36px; }
 @media (max-width: 600px) { .taxi-band { padding: 64px 28px 68px; } .taxi-band::after { inset: 10px; } }
+.faq-search input { text-align: center; box-shadow: 0 1px 12px rgba(20,17,15,.05); }
+.faq-search input:focus { box-shadow: 0 2px 18px rgba(20,17,15,.1); }
