@@ -783,3 +783,6 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 .gift-btn:hover { background: var(--ink); color: var(--paper); }
 .gift-soon { margin-top: 24px; font-size: 12.5px; letter-spacing: .06em; color: var(--grey); }
 @media (max-width: 600px) { .gift-card { padding: 44px 26px 46px; } }
+.gift-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 8px; }
+.gift-actions .gift-btn { margin-top: 20px; }
+.gift-actions [hidden], .gift-soon[hidden] { display: none; }

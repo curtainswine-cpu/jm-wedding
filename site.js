@@ -279,3 +279,24 @@ if (document.getElementById("cd-days")) {   // countdown only exists on the Home
   input.addEventListener("input", update);
   input.addEventListener("keydown", (e) => { if (e.key === "Escape") { input.value = ""; update(); } });
 })();
+
+// ----- Gifts: payment buttons (stay hidden until a link is added in registry.html) -----
+// Only genuine PayPal.me / Monzo.me links are accepted, so nothing else can be shown by mistake.
+(function () {
+  const card = document.getElementById("gift-card");
+  if (!card) return;
+  const rules = [
+    ["paypal", "gift-paypal", /^https:\/\/(www\.)?paypal\.me\/[A-Za-z0-9._\-\/]+$/i],
+    ["monzo", "gift-monzo", /^https:\/\/monzo\.me\/[A-Za-z0-9._\-\/]+$/i]
+  ];
+  let shown = 0;
+  rules.forEach(([key, id, ok]) => {
+    const url = (card.dataset[key] || "").trim();
+    const a = document.getElementById(id);
+    if (a && url && ok.test(url)) { a.href = url; a.hidden = false; shown++; }
+  });
+  if (shown) {
+    document.getElementById("gift-actions").hidden = false;
+    document.getElementById("gift-soon").hidden = true;
+  }
+})();
