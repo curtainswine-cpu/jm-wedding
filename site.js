@@ -44,6 +44,14 @@ addEventListener("scroll", () => {
 // Each guest replies individually so their own meal / dietary needs are captured.
 // Replies go to the couple's private Google Sheet. After setting that up (see rsvp-backend/SETUP.md),
 // paste the web app address below. While it is empty the form only shows the thank-you (preview mode).
+// The wedding menu: put the dish names for each course between the quotes, e.g. starter: ["Dish one", "Dish two"].
+// Until a course has dishes, its dropdown simply says "Menu choices to follow".
+const MENU = {
+  starter: [],
+  main:    [],
+  dessert: []
+};
+
 const RSVP_ENDPOINT = "";
 
 (() => {
@@ -55,6 +63,19 @@ const RSVP_ENDPOINT = "";
   if (!form || !guest || !msg || !thanks) return;
 
   const nameEl = document.getElementById("rsvp-name");
+
+  // fill the three course dropdowns from MENU
+  form.querySelectorAll("select[data-course]").forEach((sel) => {
+    const dishes = MENU[sel.dataset.course] || [];
+    sel.textContent = "";
+    const first = document.createElement("option");
+    first.value = "";
+    first.textContent = dishes.length ? "Select…" : "Menu choices to follow";
+    sel.appendChild(first);
+    dishes.forEach((d) => { const o = document.createElement("option"); o.textContent = d; sel.appendChild(o); });
+    if (!dishes.length) sel.disabled = true;
+  });
+
 
   // meal / dietary / song only appear once the guest is attending
   guest.addEventListener("change", (e) => {
@@ -80,13 +101,18 @@ const RSVP_ENDPOINT = "";
     }
 
     const attending = reply.value === "yes";
+    const pick = (id) => (attending ? document.getElementById(id).value : "");
     const response = {
       name,
       attending,
-      // meal / dietary / song only count for guests who are attending
-      meal:    attending ? document.getElementById("rsvp-meal").value : "",
-      dietary: attending ? document.getElementById("rsvp-diet").value.trim() : "",
-      song:    attending ? document.getElementById("rsvp-song").value.trim() : ""
+      // menu, dietary, allergies and song only count for guests who are attending
+      starter:   pick("rsvp-starter"),
+      main:      pick("rsvp-main"),
+      dessert:   pick("rsvp-dessert"),
+      dietary:   attending ? Array.from(form.querySelectorAll("input[name=dietary]:checked")).map((c) => c.value).join(", ") : "",
+      allergies: attending ? document.getElementById("rsvp-allergy").value.trim() : "",
+      notes:     attending ? document.getElementById("rsvp-diet").value.trim() : "",
+      song:      attending ? document.getElementById("rsvp-song").value.trim() : ""
     };
     response.website = document.getElementById("rsvp-website").value;   // spam trap, should stay empty
 

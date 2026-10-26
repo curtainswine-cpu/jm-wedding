@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600;700&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Bodoni+Moda:ital,wght@0,500;0,600;1,500&family=Cinzel:wght@500;600&family=Marcellus&family=Prata&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="style.css?v=14" />
+<link rel="stylesheet" href="style.css?v=15" />
 </head>
 <body>
 
@@ -118,20 +118,40 @@
                 <label><input type="radio" name="attendance" value="yes" /> Joyfully accepts</label>
                 <label><input type="radio" name="attendance" value="no" /> Regretfully declines</label>
               </div>
-              <!-- meal / dietary / song only appear once the guest has chosen "Joyfully accepts" -->
+              <!-- menu, dietary, allergies and song only appear once the guest has chosen "Joyfully accepts" -->
               <div class="guest-extra">
-                <div>
-                  <label for="rsvp-meal">Meal choice</label>
-                  <select id="rsvp-meal" name="meal">
-                    <option value="">Select&hellip;</option>
-                    <option>[Main option one]</option>
-                    <option>[Main option two]</option>
-                    <option>[Vegetarian]</option>
-                  </select>
+                <div class="menu-group">
+                  <label class="menu-heading">Menu choices</label>
+                  <div>
+                    <label for="rsvp-starter">Starter</label>
+                    <select id="rsvp-starter" name="starter" data-course="starter"></select>
+                  </div>
+                  <div>
+                    <label for="rsvp-main">Main</label>
+                    <select id="rsvp-main" name="main" data-course="main"></select>
+                  </div>
+                  <div>
+                    <label for="rsvp-dessert">Dessert</label>
+                    <select id="rsvp-dessert" name="dessert" data-course="dessert"></select>
+                  </div>
                 </div>
                 <div>
-                  <label for="rsvp-diet">Dietary requirements</label>
-                  <textarea id="rsvp-diet" name="dietary" placeholder="Any allergies or dietary needs"></textarea>
+                  <label id="rsvp-diet-label">Dietary requirements</label>
+                  <div class="rsvp-checks" role="group" aria-labelledby="rsvp-diet-label">
+                    <label><input type="checkbox" name="dietary" value="Vegetarian" /> Vegetarian</label>
+                    <label><input type="checkbox" name="dietary" value="Vegan" /> Vegan</label>
+                    <label><input type="checkbox" name="dietary" value="Pescatarian" /> Pescatarian</label>
+                    <label><input type="checkbox" name="dietary" value="Gluten free" /> Gluten free</label>
+                    <label><input type="checkbox" name="dietary" value="Dairy free" /> Dairy free</label>
+                  </div>
+                </div>
+                <div>
+                  <label for="rsvp-allergy">Allergies</label>
+                  <textarea id="rsvp-allergy" name="allergies" placeholder="Please be specific, e.g. nuts, shellfish, sesame"></textarea>
+                </div>
+                <div>
+                  <label for="rsvp-diet">Anything else we should know?</label>
+                  <textarea id="rsvp-diet" name="notes" placeholder="Other dietary needs or notes about your meal"></textarea>
                 </div>
                 <div>
                   <label for="rsvp-song">Song request</label>
@@ -175,6 +195,6 @@
     Jessica &amp; Matthew &nbsp;&bull;&nbsp; 2027
   </footer>
 
-  <script src="site.js?v=11"></script>
+  <script src="site.js?v=12"></script>
 </body>
 </html>

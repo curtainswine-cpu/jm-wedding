@@ -788,3 +788,11 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 .gift-actions [hidden], .gift-soon[hidden] { display: none; }
 
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* RSVP: menu group + dietary checkboxes */
+.menu-group { display: grid; gap: 20px; }
+.rsvp-form .menu-heading { margin-bottom: 0; }
+.rsvp-form select:disabled { color: var(--grey); opacity: 1; }
+.rsvp-checks { display: flex; flex-wrap: wrap; gap: 10px 22px; }
+.rsvp-checks label { display: inline-flex; align-items: center; gap: 8px; text-transform: none; letter-spacing: .03em; font-size: 14px; color: var(--ink); margin: 0; cursor: pointer; }
+.rsvp-form input[type=checkbox] { accent-color: var(--ink); width: 16px; height: 16px; }
