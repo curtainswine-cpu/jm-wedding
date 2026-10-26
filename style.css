@@ -921,3 +921,6 @@ nav a.active::after { width: 0; }
   nav a::after { left: 9px; }
   nav a:hover::after { width: calc(100% - 18px); }
 }
+/* every frame in a row is the same height: the cards stretch and the write-up fills what is left under the photo */
+.party-card { display: flex; flex-direction: column; }
+.party-text { flex: 1 1 auto; }
