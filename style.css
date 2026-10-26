@@ -709,27 +709,29 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 .inline-link:hover { border-color: var(--ink); }
 
 /* ---------- Things to Do: image cards ---------- */
-.place-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 28px; max-width: 1040px; margin: 0 auto; }
-.place-card { display: block; flex: 0 1 calc((100% - 56px) / 3); color: var(--ink); text-decoration: none; }
+.place-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 26px 22px; max-width: 1060px; margin: 0 auto; }
+.place-card { display: block; flex: 0 1 calc((100% - 66px) / 4); min-width: 0; color: var(--ink); text-decoration: none; }
 .place-media { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--ink); }
 .place-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s cubic-bezier(.2,.6,.2,1); }
 .place-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,17,15,.82) 0%, rgba(20,17,15,.35) 45%, rgba(20,17,15,.1) 100%); transition: background .4s; }
 .place-card:hover .place-media img, .place-card:focus-visible .place-media img { transform: scale(1.05); }
 .place-card:focus-visible { outline: 1px solid var(--ink); outline-offset: 4px; }
-.place-title { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 0 20px 18px; text-align: center; color: #fff; }
-.place-title strong { display: block; font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: clamp(22px, 2.6vw, 26px); line-height: 1.15; letter-spacing: .02em; }
-.place-title em { display: block; margin-top: 6px; font-style: normal; font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; opacity: .85; }
+.place-title { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 0 14px 14px; text-align: center; color: #fff; }
+.place-title strong { display: block; font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 21px; line-height: 1.15; letter-spacing: .02em; }
+.place-title em { display: block; margin-top: 6px; font-style: normal; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; opacity: .85; }
 .place-media--plain { display: flex; align-items: center; justify-content: center; }
 .place-media--plain::after { inset: 12px; background: none; border: 1px solid rgba(255,255,255,.35); transition: inset .4s, border-color .4s; }
 .place-media--plain .place-title { position: static; padding: 0 28px; }
 .place-card:hover .place-media--plain::after { inset: 8px; border-color: rgba(255,255,255,.7); }
-.place-note { margin: 14px 4px 0; font-size: 13.5px; line-height: 1.65; color: var(--grey); text-align: center; }
+.place-note { margin: 12px 2px 0; font-size: 12.5px; line-height: 1.6; color: var(--grey); text-align: center; }
 .photo-credits { max-width: 760px; margin: 56px auto 0; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; line-height: 1.7; color: var(--grey); text-align: center; }
 .photo-credits summary { cursor: pointer; letter-spacing: .22em; text-transform: uppercase; font-size: 10.5px; }
 .photo-credits ul { list-style: none; margin: 14px 0 0; padding: 0; }
 .photo-credits li { margin-bottom: 4px; }
 .photo-credits a { color: inherit; border-bottom: 1px solid var(--line); text-decoration: none; }
 .photo-credits a:hover { border-color: var(--ink); color: var(--ink); }
-@media (max-width: 860px) { .place-card { flex-basis: calc((100% - 28px) / 2); } }
-@media (max-width: 560px) { .place-grid { gap: 22px; } .place-card { flex-basis: 100%; } }
-.place-hint { margin-top: 40px; font-size: 12.5px; color: var(--grey); }
+.place-card--static { cursor: default; }
+.place-card--static .place-media--plain::after { transition: none; }
+.place-card--static:hover .place-media--plain::after { inset: 12px; border-color: rgba(255,255,255,.35); }
+@media (max-width: 900px) { .place-card { flex-basis: calc((100% - 44px) / 3); } }
+@media (max-width: 600px) { .place-grid { gap: 22px 14px; } .place-card { flex-basis: calc((100% - 14px) / 2); } .place-title strong { font-size: 17px; } .place-title em { font-size: 8px; letter-spacing: .14em; } .place-title { padding: 0 8px 10px; } .place-note { font-size: 12px; } }
