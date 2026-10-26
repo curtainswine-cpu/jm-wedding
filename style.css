@@ -851,3 +851,6 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 .tl-art img[src*="couple"] { height: 136px; }
 .tl-art img[src*="tower"] { height: 120px; }
 @media (max-width: 720px) { .tl-art img[src*="couple"] { height: 108px; } .tl-art img[src*="tower"] { height: 96px; } }
+/* camera and rings a little smaller */
+.tl-art img[src*="camera"], .tl-art img[src*="ceremony"] { height: 84px; }
+@media (max-width: 720px) { .tl-art img[src*="camera"], .tl-art img[src*="ceremony"] { height: 68px; } }
