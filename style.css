@@ -765,10 +765,10 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 .taxi-link { display: block; margin-top: 18px; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: #fff; opacity: .7; text-decoration: none; }
 .taxi-link:hover { opacity: 1; }
 
-/* Things to Do: the intro section sits above the taxi band, and the guide continues below it */
-#todo { padding-bottom: 64px; }
-#todo .sec-intro { margin-bottom: 0; }
-.sec--after-band { padding-top: 36px; }
+/* Things to Do: the guide, then the taxi band, then the photo credits */
+#todo { padding-bottom: 72px; }
+.sec--credits { padding-top: 56px; padding-bottom: 72px; }
+.sec--credits .photo-credits { margin-top: 0; }
 @media (max-width: 600px) { .taxi-band { padding: 64px 28px 68px; } .taxi-band::after { inset: 10px; } }
 .faq-search input { text-align: center; box-shadow: 0 1px 12px rgba(20,17,15,.05); }
 .faq-search input:focus { box-shadow: 0 2px 18px rgba(20,17,15,.1); }
