@@ -937,3 +937,6 @@ html { scroll-behavior: smooth; }
 .scroll-cue svg { opacity: .75; animation: partyNudge 2.6s ease-in-out infinite; transition: opacity .3s; }
 .scroll-cue:hover, .scroll-cue:focus-visible { background: #f4efe7; outline: none; }
 .scroll-cue:hover svg, .scroll-cue:focus-visible svg { opacity: 1; }
+/* single-person photos (maid of honour, best man) are sized to the screen height, so the whole picture is on screen after the scroll */
+.party-grid--solo .party-card { flex: 0 1 min(380px, calc((100vh - 270px) * .75)); max-width: min(380px, calc((100vh - 270px) * .75)); min-width: min(100%, 210px); }
+@supports (height: 100svh) { .party-grid--solo .party-card { flex-basis: min(380px, calc((100svh - 270px) * .75)); max-width: min(380px, calc((100svh - 270px) * .75)); } }
