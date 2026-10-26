@@ -49,10 +49,10 @@ header {
   padding: 22px 24px;
   background: rgba(250, 248, 244, 0.82);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid #d5cab9;   /* soft beige line under the menu */
   transition: border-color .4s ease, padding .4s ease;
 }
-header.scrolled { border-color: var(--line); padding: 14px 24px; }
+header.scrolled { padding: 14px 24px; }
 
 nav ul {
   list-style: none;
@@ -433,7 +433,7 @@ html:not(.design-mode) .font-switcher { display: none; }
 /* ============ RSVP — portrait paper invitation ============ */
 /* Soft champagne backdrop so the card reads as a sheet of paper laid on a table */
 .rsvp-backdrop {
-  background: var(--champagne);
+  background: #f4efe7;   /* lighter than the champagne used elsewhere */
   padding: 96px 24px 110px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -898,12 +898,12 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
   .made-by { order: 2; margin-top: 12px; }
 }
 /* Wedding Party: very fine corner detailing around each name and description, in the deeper tone */
-.party-text { position: relative; margin-top: 14px; padding: 26px 24px 24px;
+.party-text { position: relative; margin-top: 22px; padding: 38px 30px 34px;
   background:
-    url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2723%27%20height=%2723%27%20viewBox=%270%200%2023%2023%27%3E%3Cpath%20d=%27M1.5%2022V10.5C1.5%205.5%205.5%201.5%2010.5%201.5H22%27%20fill=%27none%27%20stroke=%27%232d2924%27%20stroke-width=%27.8%27%20stroke-linecap=%27round%27/%3E%3Ccircle%20cx=%277%27%20cy=%277%27%20r=%271%27%20fill=%27%232d2924%27/%3E%3C/svg%3E") left top / 23px 23px no-repeat,
-    url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2723%27%20height=%2723%27%20viewBox=%270%200%2023%2023%27%3E%3Cpath%20d=%27M21.5%2022V10.5C21.5%205.5%2017.5%201.5%2012.5%201.5H1%27%20fill=%27none%27%20stroke=%27%232d2924%27%20stroke-width=%27.8%27%20stroke-linecap=%27round%27/%3E%3Ccircle%20cx=%2716%27%20cy=%277%27%20r=%271%27%20fill=%27%232d2924%27/%3E%3C/svg%3E") right top / 23px 23px no-repeat,
-    url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2723%27%20height=%2723%27%20viewBox=%270%200%2023%2023%27%3E%3Cpath%20d=%27M1.5%201V12.5C1.5%2017.5%205.5%2021.5%2010.5%2021.5H22%27%20fill=%27none%27%20stroke=%27%232d2924%27%20stroke-width=%27.8%27%20stroke-linecap=%27round%27/%3E%3Ccircle%20cx=%277%27%20cy=%2716%27%20r=%271%27%20fill=%27%232d2924%27/%3E%3C/svg%3E") left bottom / 23px 23px no-repeat,
-    url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2723%27%20height=%2723%27%20viewBox=%270%200%2023%2023%27%3E%3Cpath%20d=%27M21.5%201V12.5C21.5%2017.5%2017.5%2021.5%2012.5%2021.5H1%27%20fill=%27none%27%20stroke=%27%232d2924%27%20stroke-width=%27.8%27%20stroke-linecap=%27round%27/%3E%3Ccircle%20cx=%2716%27%20cy=%2716%27%20r=%271%27%20fill=%27%232d2924%27/%3E%3C/svg%3E") right bottom / 23px 23px no-repeat; }
+    url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2736%27%20height=%2736%27%20viewBox=%270%200%2023%2023%27%3E%3Cpath%20d=%27M1.5%2022V10.5C1.5%205.5%205.5%201.5%2010.5%201.5H22%27%20fill=%27none%27%20stroke=%27%232d2924%27%20stroke-width=%27.8%27%20stroke-linecap=%27round%27/%3E%3Ccircle%20cx=%277%27%20cy=%277%27%20r=%271%27%20fill=%27%232d2924%27/%3E%3C/svg%3E") left top / 36px 36px no-repeat,
+    url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2736%27%20height=%2736%27%20viewBox=%270%200%2023%2023%27%3E%3Cpath%20d=%27M21.5%2022V10.5C21.5%205.5%2017.5%201.5%2012.5%201.5H1%27%20fill=%27none%27%20stroke=%27%232d2924%27%20stroke-width=%27.8%27%20stroke-linecap=%27round%27/%3E%3Ccircle%20cx=%2716%27%20cy=%277%27%20r=%271%27%20fill=%27%232d2924%27/%3E%3C/svg%3E") right top / 36px 36px no-repeat,
+    url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2736%27%20height=%2736%27%20viewBox=%270%200%2023%2023%27%3E%3Cpath%20d=%27M1.5%201V12.5C1.5%2017.5%205.5%2021.5%2010.5%2021.5H22%27%20fill=%27none%27%20stroke=%27%232d2924%27%20stroke-width=%27.8%27%20stroke-linecap=%27round%27/%3E%3Ccircle%20cx=%277%27%20cy=%2716%27%20r=%271%27%20fill=%27%232d2924%27/%3E%3C/svg%3E") left bottom / 36px 36px no-repeat,
+    url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2736%27%20height=%2736%27%20viewBox=%270%200%2023%2023%27%3E%3Cpath%20d=%27M21.5%201V12.5C21.5%2017.5%2017.5%2021.5%2012.5%2021.5H1%27%20fill=%27none%27%20stroke=%27%232d2924%27%20stroke-width=%27.8%27%20stroke-linecap=%27round%27/%3E%3Ccircle%20cx=%2716%27%20cy=%2716%27%20r=%271%27%20fill=%27%232d2924%27/%3E%3C/svg%3E") right bottom / 36px 36px no-repeat; }
 .party-text .party-name { margin-top: 0; }
 
 /* footer: both texts sit close to the heart, with the year tucked in beside the names */
