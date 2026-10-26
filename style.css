@@ -855,5 +855,5 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 .tl-art img[src*="camera"], .tl-art img[src*="ceremony"] { height: 84px; }
 @media (max-width: 720px) { .tl-art img[src*="camera"], .tl-art img[src*="ceremony"] { height: 68px; } }
 /* the head table is a wide picture: fit it to its column */
-.tl-art img[src*="breakfast"] { height: auto; width: 100%; }
-@media (max-width: 720px) { .tl-art img[src*="breakfast"] { width: 240px; max-width: 100%; } }
+.tl-art img[src*="breakfast"] { height: auto; width: 140px; }
+@media (max-width: 720px) { .tl-art img[src*="breakfast"] { width: 200px; max-width: 100%; } }
