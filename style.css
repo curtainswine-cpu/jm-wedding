@@ -924,3 +924,9 @@ nav a.active::after { width: 0; }
 /* every frame in a row is the same height: the cards stretch and the write-up fills what is left under the photo */
 .party-card { display: flex; flex-direction: column; }
 .party-text { flex: 1 1 auto; }
+/* Wedding Party: the first screen is just the title, so the first photo is revealed whole as you scroll */
+#party .sec-head { position: relative; display: flex; flex-direction: column; justify-content: center; min-height: calc(100vh - 150px); min-height: calc(100svh - 150px); padding-bottom: 44px; }
+#party .sec-head::after { content: ""; position: absolute; left: 50%; bottom: 30px; width: 26px; height: 14px; margin-left: -13px; opacity: .7; background: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2726%27%20height=%2714%27%20viewBox=%270%200%2026%2014%27%3E%3Cpath%20d=%27M2%202L13%2012L24%202%27%20fill=%27none%27%20stroke=%27%232d2924%27%20stroke-width=%271%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27/%3E%3C/svg%3E") center / contain no-repeat; animation: partyNudge 2.6s ease-in-out infinite; }
+@keyframes partyNudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { #party .sec-head::after { animation: none; } }
+@media (max-width: 640px) { #party .sec-head { min-height: calc(100vh - 140px); min-height: calc(100svh - 140px); } }
