@@ -883,3 +883,17 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 @media (max-width: 720px) { .tl-art img[src*="dinner"] { width: 230px; max-width: 100%; } }
 /* footer credit */
 .made-by { display: block; margin-top: 12px; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 16px; letter-spacing: .02em; text-transform: none; color: var(--grey); }
+/* footer on one line: the names and date at one end, the credit at the other */
+@media (min-width: 701px) {
+  footer { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 40px; width: 100%; max-width: 1100px; margin: 0 auto; padding: 40px clamp(24px, 5vw, 56px); text-align: left; }
+  .made-by { margin-top: 0; white-space: nowrap; }
+}
+@media (min-width: 701px) {
+  footer::after { content: ""; order: 1; width: 26px; height: 24px; background: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2726%27%20height=%2724%27%20viewBox=%270%200%2026%2024%27%3E%3Cpath%20d=%27M13%2021.5C6%2015.8%202%2012%202%207.8%202%204.8%204.3%202.6%207.2%202.6c2.4%200%204.6%201.4%205.8%203.6%201.2-2.2%203.4-3.6%205.8-3.6%202.900%200%205.200%202.200%205.200%205.200%200%204.200-4%208-11%2013.700z%27%20fill=%27none%27%20stroke=%27%23c9b49b%27%20stroke-width=%271%27%20stroke-linejoin=%27round%27%20stroke-linecap=%27round%27/%3E%3C/svg%3E") center / contain no-repeat; }
+  .made-by { order: 2; justify-self: end; }
+}
+@media (max-width: 700px) {
+  footer { display: flex; flex-direction: column; align-items: center; }
+  footer::after { content: ""; order: 1; display: block; width: 24px; height: 22px; margin: 12px auto 0; background: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2726%27%20height=%2724%27%20viewBox=%270%200%2026%2024%27%3E%3Cpath%20d=%27M13%2021.5C6%2015.8%202%2012%202%207.8%202%204.8%204.3%202.6%207.2%202.6c2.4%200%204.6%201.4%205.8%203.6%201.2-2.2%203.4-3.6%205.8-3.6%202.900%200%205.200%202.200%205.200%205.200%200%204.200-4%208-11%2013.700z%27%20fill=%27none%27%20stroke=%27%23c9b49b%27%20stroke-width=%271%27%20stroke-linejoin=%27round%27%20stroke-linecap=%27round%27/%3E%3C/svg%3E") center / contain no-repeat; }
+  .made-by { order: 2; margin-top: 12px; }
+}
