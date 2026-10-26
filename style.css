@@ -878,3 +878,6 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 .faq-search input { border-color: #cfc8bb; box-shadow: 0 0 0 7px rgba(215,209,198,.38), 0 10px 34px rgba(20,17,15,.14); transition: box-shadow .3s, border-color .3s; }
 .faq-search input:hover { box-shadow: 0 0 0 8px rgba(215,209,198,.48), 0 12px 38px rgba(20,17,15,.17); }
 .faq-search input:focus { border-color: var(--ink); box-shadow: 0 0 0 9px rgba(20,17,15,.09), 0 14px 42px rgba(20,17,15,.2); }
+/* the covered dish is a wide picture: fit it to its column */
+.tl-art img[src*="dinner"] { height: auto; width: 188px; }
+@media (max-width: 720px) { .tl-art img[src*="dinner"] { width: 230px; max-width: 100%; } }
