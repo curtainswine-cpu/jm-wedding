@@ -881,3 +881,5 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 /* the covered dish is a wide picture: fit it to its column */
 .tl-art img[src*="dinner"] { height: auto; width: 188px; }
 @media (max-width: 720px) { .tl-art img[src*="dinner"] { width: 230px; max-width: 100%; } }
+/* footer credit */
+.made-by { display: block; margin-top: 12px; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 16px; letter-spacing: .02em; text-transform: none; color: var(--grey); }
