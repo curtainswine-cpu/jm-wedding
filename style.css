@@ -847,3 +847,7 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
   .tl-item > .tl-text { grid-row: 2; }
   .tl-art img { height: 84px; }
 }
+/* detailed drawings read better a little larger */
+.tl-art img[src*="couple"] { height: 136px; }
+.tl-art img[src*="tower"] { height: 120px; }
+@media (max-width: 720px) { .tl-art img[src*="couple"] { height: 108px; } .tl-art img[src*="tower"] { height: 96px; } }
