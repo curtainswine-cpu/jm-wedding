@@ -912,3 +912,16 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
   footer { grid-template-columns: auto auto auto; justify-content: center; column-gap: 34px; }
   .made-by { justify-self: start; }
 }
+/* menu: the current page is a soft beige pill (the RSVP page background) instead of an underline */
+nav ul { gap: 8px; }
+nav a { padding: 7px 14px; border-radius: 999px; transition: color .3s ease, background-color .3s ease; }
+nav a::after { left: 14px; bottom: 4px; }
+nav a:hover::after { width: calc(100% - 28px); }
+nav a.active { background: #f4efe7; }
+nav a.active::after { width: 0; }
+@media (max-width: 640px) {
+  nav ul { gap: 4px 2px; }
+  nav a { padding: 6px 9px; }
+  nav a::after { left: 9px; }
+  nav a:hover::after { width: calc(100% - 18px); }
+}
