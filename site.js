@@ -44,12 +44,13 @@ addEventListener("scroll", () => {
 // Each guest replies individually so their own meal / dietary needs are captured.
 // Replies go to the couple's private Google Sheet. After setting that up (see rsvp-backend/SETUP.md),
 // paste the web app address below. While it is empty the form only shows the thank-you (preview mode).
-// The wedding menu: put the dish names for each course between the quotes, e.g. starter: ["Dish one", "Dish two"].
-// Until a course has dishes, its dropdown simply says "Menu choices to follow".
+// The wedding menu. TEMPORARY choices are in place until the dishes are confirmed: replace each line with the
+// real dish names (up to three per course, one main must be vegetarian or vegan). Do this before replies are
+// collected for real, because whatever a guest picks here is what is saved.
 const MENU = {
-  starter: [],
-  main:    [],
-  dessert: []
+  starter: ["Starter choice one", "Starter choice two", "Starter choice three"],
+  main:    ["Main choice one", "Main choice two", "Vegetarian or vegan main"],
+  dessert: ["Dessert choice one", "Dessert choice two", "Dessert choice three"]
 };
 
 const RSVP_ENDPOINT = "";
