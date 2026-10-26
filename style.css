@@ -820,3 +820,29 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 .info-grid--cards .info-card::after { inset: 8px; border: 1px solid rgba(215,209,198,.55); border-radius: 19px; }
 .info-grid--cards .info-card:hover { box-shadow: 0 12px 36px rgba(20,17,15,.1); transform: translateY(-2px); }
 .info-icon { stroke-width: .9; }
+
+/* The Day: stylised dividers (same line colour) and fine side rails */
+.timeline { position: relative; max-width: 640px; padding: 8px 0; }
+.timeline::before, .timeline::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 1px; pointer-events: none;
+  background: linear-gradient(to bottom, transparent, #d7d1c6 7%, #d7d1c6 93%, transparent);
+}
+.timeline::before { left: 3px; }
+.timeline::after  { right: 3px; }
+.tl-item {
+  position: relative; border-bottom: 0; padding: 28px 64px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7'%3E%3Cpath d='M3.5 .5 6.5 3.5 3.5 6.5 .5 3.5z' fill='%23faf8f4' stroke='%23d7d1c6'/%3E%3C/svg%3E") left 0 center / 7px 7px no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7'%3E%3Cpath d='M3.5 .5 6.5 3.5 3.5 6.5 .5 3.5z' fill='%23faf8f4' stroke='%23d7d1c6'/%3E%3C/svg%3E") right 0 center / 7px 7px no-repeat;
+}
+.tl-item:not(:last-child)::after {
+  content: ""; position: absolute; left: 64px; right: 64px; bottom: -6px; height: 12px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 1 11 6 6 11 1 6z' fill='%23faf8f4' stroke='%23d7d1c6'/%3E%3Ccircle cx='6' cy='6' r='1' fill='%23d7d1c6'/%3E%3C/svg%3E") center / 12px 12px no-repeat,
+    linear-gradient(to right, transparent, #d7d1c6) left center / calc(50% - 14px) 1px no-repeat,
+    linear-gradient(to left, transparent, #d7d1c6) right center / calc(50% - 14px) 1px no-repeat;
+}
+@media (max-width: 600px) {
+  .tl-item { padding: 24px 34px; }
+  .tl-item:not(:last-child)::after { left: 34px; right: 34px; }
+}
