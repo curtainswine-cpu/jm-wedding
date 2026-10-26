@@ -735,3 +735,31 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 .place-card--static:hover .place-media--plain::after { inset: 12px; border-color: rgba(255,255,255,.35); }
 @media (max-width: 900px) { .place-card { flex-basis: calc((100% - 44px) / 3); } }
 @media (max-width: 600px) { .place-grid { gap: 22px 14px; } .place-card { flex-basis: calc((100% - 14px) / 2); } .place-title strong { font-size: 17px; } .place-title em { font-size: 8px; letter-spacing: .14em; } .place-title { padding: 0 8px 10px; } .place-note { font-size: 12px; } }
+
+/* FAQ search */
+.faq-search { max-width: 720px; margin: 0 auto 28px; }
+.faq-search-label { display: block; font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--grey); margin-bottom: 10px; }
+.faq-search input { width: 100%; box-sizing: border-box; font: 300 16px "Jost", sans-serif; color: var(--ink); background: transparent; border: 1px solid var(--line); padding: 14px 16px; border-radius: 0; outline: none; -webkit-appearance: none; appearance: none; transition: border-color .25s; }
+.faq-search input:focus { border-color: var(--ink); }
+.faq-search input::placeholder { color: var(--grey); }
+.faq-status { min-height: 18px; margin-top: 8px; font-size: 12px; letter-spacing: .08em; color: var(--grey); }
+.faq-list details[hidden] { display: none; }
+.faq-more { max-width: 720px; margin: 44px auto 0; }
+.faq-more-title { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; font-size: 24px; text-align: center; margin-bottom: 8px; }
+.faq-more-list { list-style: none; margin: 0; padding: 0; }
+.faq-more-list li { border-bottom: 1px solid var(--line); }
+.faq-more-list a { display: block; padding: 16px 4px; color: var(--ink); text-decoration: none; }
+.faq-more-list strong { display: block; font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 20px; }
+.faq-more-list span { display: block; margin-top: 3px; font-size: 13.5px; line-height: 1.6; color: var(--grey); }
+.faq-more-list a:hover strong { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.faq-empty { max-width: 720px; margin: 36px auto 0; text-align: center; font-size: 14px; color: var(--grey); }
+
+/* Taxi banner (Things to Do): full-width band above the footer */
+.taxi-band { background: var(--ink); color: #fff; text-align: center; padding: 64px 24px 68px; }
+.taxi-kicker { font-size: 11px; letter-spacing: .34em; text-transform: uppercase; opacity: .7; margin-bottom: 16px; }
+.taxi-title { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: clamp(30px, 5vw, 44px); line-height: 1.1; margin-bottom: 18px; }
+.taxi-text { max-width: 520px; margin: 0 auto 26px; font-size: 14.5px; line-height: 1.8; opacity: .85; }
+.taxi-phone { display: inline-block; font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: clamp(32px, 6vw, 48px); letter-spacing: .04em; color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.45); padding-bottom: 4px; transition: border-color .25s; }
+.taxi-phone:hover { border-color: #fff; }
+.taxi-link { display: block; margin-top: 18px; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: #fff; opacity: .7; text-decoration: none; }
+.taxi-link:hover { opacity: 1; }

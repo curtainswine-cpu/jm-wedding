@@ -225,3 +225,57 @@ if (document.getElementById("cd-days")) {   // countdown only exists on the Home
   if (prev) prev.addEventListener("click", () => { idx--; render(); });
   if (next) next.addEventListener("click", () => { idx++; render(); });
 })();
+
+// ----- FAQ search -----
+// Filters the questions on this page as you type, and lists matching information from the other pages
+// (the small index lives in faq.html). Everything runs in the browser; nothing is sent anywhere.
+(function () {
+  const input = document.getElementById("faq-q");
+  if (!input) return;
+  const items = Array.from(document.querySelectorAll(".faq-list details"));
+  const status = document.getElementById("faq-status");
+  const more = document.getElementById("faq-more");
+  const moreList = document.getElementById("faq-more-list");
+  const empty = document.getElementById("faq-empty");
+  let index = [];
+  try { index = JSON.parse(document.getElementById("site-index").textContent); } catch (e) {}
+
+  const STOP = new Set("the a an is are can do does i we you to of and or for my our how what when where who there in on at be it me us if should would could will have has need get go with this that".split(" "));
+  const fold = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const words = (q) => fold(q).split(/[^a-z0-9:&']+/).filter((w) => w.length > 1 && !STOP.has(w))
+    .map((w) => (w.length > 3 && w.endsWith("s") ? w.slice(0, -1) : w));
+  // each search word must match the start of a word on the page ("park" finds "parking", but "dress" won't find "address")
+  const prep = (s) => " " + fold(s).replace(/[^a-z0-9:&']+/g, " ");
+  const matches = (hay, ws) => ws.every((w) => hay.includes(" " + w));
+  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+
+  const hay = items.map((d) => prep(d.textContent + " " + (d.dataset.k || "")));
+  const indexHay = index.map((e) => prep([e.t, e.s, e.k].join(" ")));
+  let wasOpen = null;
+
+  function update() {
+    const raw = input.value.trim();
+    const ws = words(raw);
+    if (!raw || !ws.length) {
+      items.forEach((d, i) => { d.hidden = false; if (wasOpen) d.open = wasOpen[i]; });
+      wasOpen = null;
+      more.hidden = true; empty.hidden = true; status.textContent = "";
+      return;
+    }
+    if (!wasOpen) wasOpen = items.map((d) => d.open);
+    let n = 0;
+    items.forEach((d, i) => {
+      const ok = matches(hay[i], ws);
+      d.hidden = !ok; d.open = ok; if (ok) n++;
+    });
+    const hits = index.filter((e, i) => matches(indexHay[i], ws)).slice(0, 6);
+    moreList.innerHTML = hits.map((e) =>
+      '<li><a href="' + e.h + '"><strong>' + esc(e.t) + '</strong><span>' + esc(e.s) + '</span></a></li>').join("");
+    more.hidden = !hits.length;
+    empty.hidden = n > 0 || hits.length > 0;
+    const total = n + hits.length;
+    status.textContent = total ? total + (total === 1 ? " result" : " results") : "No results";
+  }
+  input.addEventListener("input", update);
+  input.addEventListener("keydown", (e) => { if (e.key === "Escape") { input.value = ""; update(); } });
+})();
