@@ -926,8 +926,14 @@ nav a.active::after { width: 0; }
 .party-text { flex: 1 1 auto; }
 /* Wedding Party: the first screen is just the title, so the first photo is revealed whole as you scroll */
 #party .sec-head { position: relative; display: flex; flex-direction: column; justify-content: center; min-height: calc(100vh - 150px); min-height: calc(100svh - 150px); padding-bottom: 44px; }
-#party .sec-head::after { content: ""; position: absolute; left: 50%; bottom: 30px; width: 26px; height: 14px; margin-left: -13px; opacity: .7; background: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2726%27%20height=%2714%27%20viewBox=%270%200%2026%2014%27%3E%3Cpath%20d=%27M2%202L13%2012L24%202%27%20fill=%27none%27%20stroke=%27%232d2924%27%20stroke-width=%271%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27/%3E%3C/svg%3E") center / contain no-repeat; animation: partyNudge 2.6s ease-in-out infinite; }
 @keyframes partyNudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
-@media (prefers-reduced-motion: reduce) { #party .sec-head::after { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .scroll-cue svg { animation: none; } html { scroll-behavior: auto; } }
 @media (max-width: 640px) { #party .sec-head { min-height: calc(100vh - 140px); min-height: calc(100svh - 140px); } }
 .party-lead { text-align: center; font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; font-size: clamp(19px, 2.6vw, 23px); letter-spacing: .02em; color: var(--grey); margin: -14px auto 0; max-width: 28ch; line-height: 1.45; }
+/* the arrow under the Wedding Party title is a button: it scrolls smoothly down to the first photo */
+html { scroll-behavior: smooth; }
+.party-subhead { scroll-margin-top: 150px; }
+.scroll-cue { position: absolute; left: 50%; bottom: 14px; width: 54px; height: 54px; margin-left: -27px; display: flex; align-items: center; justify-content: center; color: var(--ink); border-radius: 50%; transition: background-color .3s; }
+.scroll-cue svg { opacity: .75; animation: partyNudge 2.6s ease-in-out infinite; transition: opacity .3s; }
+.scroll-cue:hover, .scroll-cue:focus-visible { background: #f4efe7; outline: none; }
+.scroll-cue:hover svg, .scroll-cue:focus-visible svg { opacity: 1; }
