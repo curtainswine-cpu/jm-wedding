@@ -814,3 +814,9 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 .info-grid--cards .info-card .link { margin-top: auto; padding-top: 0; }
 .info-grid--cards .info-card p + .link { margin-top: 18px; }
 @media (max-width: 680px) { .info-grid--cards { grid-template-columns: 1fr; } .info-grid--cards .info-card { padding: 38px 24px 34px; } }
+
+/* softer travel cards: rounded, light border, gentle shadow */
+.info-grid--cards .info-card { border: 1px solid var(--line); border-radius: 26px; background: rgba(255,255,255,.35); box-shadow: 0 8px 30px rgba(20,17,15,.06); transition: box-shadow .3s, transform .3s; }
+.info-grid--cards .info-card::after { inset: 8px; border: 1px solid rgba(215,209,198,.55); border-radius: 19px; }
+.info-grid--cards .info-card:hover { box-shadow: 0 12px 36px rgba(20,17,15,.1); transform: translateY(-2px); }
+.info-icon { stroke-width: .9; }
