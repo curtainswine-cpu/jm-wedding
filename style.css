@@ -803,3 +803,14 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 .place-grid--3 .place-title strong { font-size: 24px; }
 @media (max-width: 900px) { .place-grid--3 .place-card { flex-basis: calc((100% - 22px) / 2); } }
 @media (max-width: 600px) { .place-grid--3 .place-card { flex-basis: 100%; } .place-grid--3 .place-title strong { font-size: 22px; } }
+
+/* Travel: the four getting-there items as bordered cards */
+.info-grid--cards { gap: 28px; max-width: 880px; margin: 0 auto; }
+.info-grid--cards .info-card { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 44px 32px 40px; border: 1px solid var(--ink); }
+.info-grid--cards .info-card::after { content: ""; position: absolute; inset: 6px; border: 1px solid var(--line); pointer-events: none; }
+.info-icon { width: 34px; height: 34px; margin-bottom: 18px; fill: none; stroke: var(--ink); stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; }
+.info-grid--cards .info-card h3 { margin-bottom: 14px; }
+.info-grid--cards .info-card p { max-width: 340px; }
+.info-grid--cards .info-card .link { margin-top: auto; padding-top: 0; }
+.info-grid--cards .info-card p + .link { margin-top: 18px; }
+@media (max-width: 680px) { .info-grid--cards { grid-template-columns: 1fr; } .info-grid--cards .info-card { padding: 38px 24px 34px; } }
