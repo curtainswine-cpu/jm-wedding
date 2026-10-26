@@ -866,7 +866,7 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 .day-end::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 26px; background:url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2764%27%20height=%2716%27%20viewBox=%270%200%2064%2016%27%3E%3Cg%20fill=%27none%27%20stroke=%27%23d7d1c6%27%20stroke-width=%271%27%20stroke-linecap=%27round%27%3E%3Cpath%20d=%27M32%208%20C36%208%2038%203%2043%203%20C47%203%2048.5%207%2045.5%208%20C43%208.8%2042%206%2044%205.2%27/%3E%3Cpath%20d=%27M32%208%20C28%208%2026%203%2021%203%20C17%203%2015.5%207%2018.5%208%20C21%208.8%2022%206%2020%205.2%27/%3E%3C/g%3E%3Ccircle%20cx=%2732%27%20cy=%278%27%20r=%271.3%27%20fill=%27%23d7d1c6%27/%3E%3C/svg%3E") center / 104px 26px no-repeat,
     linear-gradient(to right, transparent, #d7d1c6) left center / calc(50% - 60px) 1px no-repeat,
     linear-gradient(to left, transparent, #d7d1c6) right center / calc(50% - 60px) 1px no-repeat; }
-.day-end img { display: inline-block; width: min(270px, 70%); height: auto; opacity: .55; }
+.day-end img { display: inline-block; width: min(270px, 70%); height: auto; opacity: .95; }
 @media (max-width: 720px) { .tl-art img[src*="taxi"] { width: 220px; max-width: 100%; } .day-end img { width: min(240px, 74%); } }
 /* bring the champagne tower closer to its text */
 @media (min-width: 721px) { .tl-art img[src*="tower"] { margin-right: -56px; } }
