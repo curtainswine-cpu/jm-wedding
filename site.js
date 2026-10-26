@@ -42,9 +42,10 @@ addEventListener("scroll", () => {
 
 // ----- RSVP (one person per reply) -----
 // Each guest replies individually so their own meal / dietary needs are captured.
-// Replies are NOT saved anywhere yet: to collect real responses, send the `response`
-// object built in the submit handler to a form service (Formspree / Google Forms / etc.)
-// and remove the "Preview only" note in the markup.
+// Replies go to the couple's private Google Sheet. After setting that up (see rsvp-backend/SETUP.md),
+// paste the web app address below. While it is empty the form only shows the thank-you (preview mode).
+const RSVP_ENDPOINT = "";
+
 (() => {
   const form   = document.getElementById("rsvp-form");
   const guest  = document.getElementById("rsvp-guest");
@@ -87,15 +88,33 @@ addEventListener("scroll", () => {
       dietary: attending ? document.getElementById("rsvp-diet").value.trim() : "",
       song:    attending ? document.getElementById("rsvp-song").value.trim() : ""
     };
-    // TODO: send `response` to a form service here.
+    response.website = document.getElementById("rsvp-website").value;   // spam trap, should stay empty
 
-    const first = name.split(/\s+/)[0];
-    document.getElementById("rsvp-thanks-text").textContent = attending
-      ? "Thank you, " + first + ". We can’t wait to celebrate with you."
-      : "Thank you, " + first + ". We’re sorry you can’t be there – you’ll be missed.";
-    form.hidden = true;
-    thanks.hidden = false;
+    const finish = () => {
+      const first = name.split(/\s+/)[0];
+      document.getElementById("rsvp-thanks-text").textContent = attending
+        ? "Thank you, " + first + ". We can’t wait to celebrate with you."
+        : "Thank you, " + first + ". We’re sorry you can’t be there – you’ll be missed.";
+      form.hidden = true;
+      thanks.hidden = false;
+    };
+
+    if (!RSVP_ENDPOINT) { finish(); return; }
+
+    const btn = form.querySelector("button[type=submit]");
+    btn.disabled = true;
+    // text/plain keeps this a "simple" request, so the browser does not need a CORS pre-check
+    fetch(RSVP_ENDPOINT, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(response) })
+      .then(() => { btn.disabled = false; finish(); })
+      .catch(() => {
+        btn.disabled = false;
+        msg.textContent = "Sorry, that did not go through. Please check your connection and try again.";
+        msg.classList.add("error");
+        msg.hidden = false;
+      });
   });
+
+  if (RSVP_ENDPOINT) { const pn = document.getElementById("rsvp-preview-note"); if (pn) pn.hidden = true; }
 
   // lets the next person (e.g. a partner on the same device) reply, one at a time
   if (again) again.addEventListener("click", () => {

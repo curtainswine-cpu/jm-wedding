@@ -786,3 +786,5 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 .gift-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 8px; }
 .gift-actions .gift-btn { margin-top: 20px; }
 .gift-actions [hidden], .gift-soon[hidden] { display: none; }
+
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }

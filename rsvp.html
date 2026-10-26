@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600;700&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Bodoni+Moda:ital,wght@0,500;0,600;1,500&family=Cinzel:wght@500;600&family=Marcellus&family=Prata&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="style.css?v=13" />
+<link rel="stylesheet" href="style.css?v=14" />
 </head>
 <body>
 
@@ -140,6 +140,9 @@
               </div>
             </div>
 
+            <!-- spam trap: real guests never see or fill this in -->
+            <div class="hp" aria-hidden="true"><label>Leave this empty<input type="text" id="rsvp-website" name="website" tabindex="-1" autocomplete="off" /></label></div>
+
             <div class="rsvp-actions">
               <button class="btn" type="submit">Send RSVP</button>
               <p class="form-msg" id="rsvp-msg" role="alert" hidden></p>
@@ -151,7 +154,7 @@
             <p id="rsvp-thanks-text"></p>
             <button class="btn btn-ghost" type="button" id="rsvp-another">Reply for another guest</button>
             <!-- REMOVE this note once the form is connected to a real service -->
-            <p class="preview-note">Preview only &ndash; replies aren&rsquo;t being saved yet.</p>
+            <p class="preview-note" id="rsvp-preview-note">Preview only &ndash; replies aren&rsquo;t being saved yet.</p>
           </div>
         </div>
 
@@ -172,6 +175,6 @@
     Jessica &amp; Matthew &nbsp;&bull;&nbsp; 2027
   </footer>
 
-  <script src="site.js?v=10"></script>
+  <script src="site.js?v=11"></script>
 </body>
 </html>
