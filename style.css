@@ -831,3 +831,19 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
     linear-gradient(to right, transparent, #d7d1c6) left center / calc(50% - 60px) 1px no-repeat,
     linear-gradient(to left, transparent, #d7d1c6) right center / calc(50% - 60px) 1px no-repeat;
 }
+
+/* The Day: line drawings beside some of the moments */
+.timeline { max-width: 800px; }
+.tl-item { display: grid; grid-template-columns: 1fr minmax(0, 380px) 1fr; align-items: center; column-gap: 8px; }
+.tl-item > .tl-text { grid-column: 2; }
+.tl-art { display: flex; align-items: center; opacity: .92; }
+.tl-art img { display: block; height: 108px; width: auto; max-width: 100%; }
+.tl-art--l { grid-column: 1; grid-row: 1; justify-content: flex-end; padding-right: 14px; }
+.tl-art--r { grid-column: 3; grid-row: 1; justify-content: flex-start; padding-left: 14px; }
+@media (max-width: 720px) {
+  .tl-item { grid-template-columns: 1fr; row-gap: 12px; }
+  .tl-item > .tl-text, .tl-art--l, .tl-art--r { grid-column: 1; }
+  .tl-art { grid-row: 1; justify-content: center; padding: 0; }
+  .tl-item > .tl-text { grid-row: 2; }
+  .tl-art img { height: 84px; }
+}

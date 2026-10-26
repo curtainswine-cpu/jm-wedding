@@ -42,3 +42,6 @@
 
 !/Photos/places/
 !/Photos/places/*.jpg
+
+!/Photos/itinerary/
+!/Photos/itinerary/*.png
