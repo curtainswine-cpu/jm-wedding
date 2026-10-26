@@ -821,28 +821,13 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 .info-grid--cards .info-card:hover { box-shadow: 0 12px 36px rgba(20,17,15,.1); transform: translateY(-2px); }
 .info-icon { stroke-width: .9; }
 
-/* The Day: stylised dividers (same line colour) and fine side rails */
-.timeline { position: relative; max-width: 640px; padding: 8px 0; }
-.timeline::before, .timeline::after {
-  content: ""; position: absolute; top: 0; bottom: 0; width: 1px; pointer-events: none;
-  background: linear-gradient(to bottom, transparent, #d7d1c6 7%, #d7d1c6 93%, transparent);
-}
-.timeline::before { left: 3px; }
-.timeline::after  { right: 3px; }
-.tl-item {
-  position: relative; border-bottom: 0; padding: 28px 64px;
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7'%3E%3Cpath d='M3.5 .5 6.5 3.5 3.5 6.5 .5 3.5z' fill='%23faf8f4' stroke='%23d7d1c6'/%3E%3C/svg%3E") left 0 center / 7px 7px no-repeat,
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 7 7'%3E%3Cpath d='M3.5 .5 6.5 3.5 3.5 6.5 .5 3.5z' fill='%23faf8f4' stroke='%23d7d1c6'/%3E%3C/svg%3E") right 0 center / 7px 7px no-repeat;
-}
+/* The Day: swirl dividers between the events (same line colour) */
+.timeline { max-width: 600px; }
+.tl-item { position: relative; border-bottom: 0; padding: 30px 0; }
 .tl-item:not(:last-child)::after {
-  content: ""; position: absolute; left: 64px; right: 64px; bottom: -6px; height: 12px;
+  content: ""; position: absolute; left: 0; right: 0; bottom: -13px; height: 26px;
   background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 1 11 6 6 11 1 6z' fill='%23faf8f4' stroke='%23d7d1c6'/%3E%3Ccircle cx='6' cy='6' r='1' fill='%23d7d1c6'/%3E%3C/svg%3E") center / 12px 12px no-repeat,
-    linear-gradient(to right, transparent, #d7d1c6) left center / calc(50% - 14px) 1px no-repeat,
-    linear-gradient(to left, transparent, #d7d1c6) right center / calc(50% - 14px) 1px no-repeat;
-}
-@media (max-width: 600px) {
-  .tl-item { padding: 24px 34px; }
-  .tl-item:not(:last-child)::after { left: 34px; right: 34px; }
+    url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2764%27%20height=%2716%27%20viewBox=%270%200%2064%2016%27%3E%3Cg%20fill=%27none%27%20stroke=%27%23d7d1c6%27%20stroke-width=%271%27%20stroke-linecap=%27round%27%3E%3Cpath%20d=%27M32%208%20C36%208%2038%203%2043%203%20C47%203%2048.5%207%2045.5%208%20C43%208.8%2042%206%2044%205.2%27/%3E%3Cpath%20d=%27M32%208%20C28%208%2026%203%2021%203%20C17%203%2015.5%207%2018.5%208%20C21%208.8%2022%206%2020%205.2%27/%3E%3C/g%3E%3Ccircle%20cx=%2732%27%20cy=%278%27%20r=%271.3%27%20fill=%27%23d7d1c6%27/%3E%3C/svg%3E") center / 104px 26px no-repeat,
+    linear-gradient(to right, transparent, #d7d1c6) left center / calc(50% - 60px) 1px no-repeat,
+    linear-gradient(to left, transparent, #d7d1c6) right center / calc(50% - 60px) 1px no-repeat;
 }
