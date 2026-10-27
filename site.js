@@ -53,7 +53,7 @@ const MENU = {
   dessert: ["Dessert choice one", "Dessert choice two", "Dessert choice three"]
 };
 
-const RSVP_ENDPOINT = "";
+const RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbydGTsRKvUWZxcwzO--RAkphdk6zFUjHRKZvjIkHHbsS6nW8cnRiZruJOLz4SofMF8F/exec";
 
 (() => {
   const form   = document.getElementById("rsvp-form");
