@@ -869,7 +869,7 @@ main.sub > .rsvp-backdrop:first-child { padding-top: 150px; }
 .day-end img { display: inline-block; width: min(270px, 70%); height: auto; opacity: .6; }
 @media (max-width: 720px) { .tl-art img[src*="taxi"] { width: 220px; max-width: 100%; } .day-end img { width: min(240px, 74%); } }
 /* bring the champagne tower closer to its text */
-@media (min-width: 721px) { .tl-art img[src*="tower"] { margin-right: -56px; } }
+/* (the tower now sits on the right, so it needs no left-hand nudge) */
 /* centre the carriage crown (63% across the picture) under the swirl above it */
 .day-end img { transform: translateX(-13.1%); }
 /* give the martini a little more room from its text */
@@ -972,3 +972,5 @@ nav a:focus-visible::after { width: calc(100% - 28px); }
 @media (max-width: 640px) { nav a.active:hover::after, nav a:focus-visible::after { width: calc(100% - 18px); } }
 /* the "tap a card" note under the place cards: clear space above it */
 .sec-intro.place-hint { margin-top: 52px; margin-bottom: 0; font-size: 12.5px; letter-spacing: .06em; color: var(--grey); }
+.tl-art img[src*="chandelier"] { height: 124px; }
+@media (max-width: 720px) { .tl-art img[src*="chandelier"] { height: 96px; } }
