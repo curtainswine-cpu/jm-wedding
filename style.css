@@ -966,3 +966,7 @@ html { scroll-behavior: smooth; }
 /* menu hover underline: grows outward from the middle of the word, rather than sweeping in from the left */
 nav a::after { left: 50%; transform: translateX(-50%); }
 @media (max-width: 640px) { nav a::after { left: 50%; } }
+/* every menu pill, including the one for the current page, shows the same outward-growing underline on hover */
+nav a.active:hover::after, nav a.active:focus-visible::after { width: calc(100% - 28px); }
+nav a:focus-visible::after { width: calc(100% - 28px); }
+@media (max-width: 640px) { nav a.active:hover::after, nav a:focus-visible::after { width: calc(100% - 18px); } }
