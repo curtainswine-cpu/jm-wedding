@@ -959,3 +959,7 @@ html { scroll-behavior: smooth; }
 }
 /* soft rounded corners on the wedding party photos, to match the rounded write-up frames */
 .party-photo { border-radius: 24px; overflow: hidden; }
+/* the maid of honour's photo is trimmed a little at the top and bottom (about 6% each): 9:14 instead of her original 9:16 */
+.party-grid--solo .party-photo img[alt="Kirsten"] { aspect-ratio: 9 / 14; object-fit: cover; object-position: center 46%; }
+/* the best man's photo gets a light trim from the sides (about 6% each): 7:8 instead of his original square, so his head and the glasses stay in */
+.party-grid--solo .party-photo img[alt="Eliot"] { aspect-ratio: 7 / 8; object-fit: cover; object-position: 50% 50%; }
