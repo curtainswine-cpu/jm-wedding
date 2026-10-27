@@ -346,3 +346,24 @@ if (document.getElementById("cd-days")) {   // countdown only exists on the Home
     document.getElementById("gift-soon").hidden = true;
   }
 })();
+
+// ----- Wedding Party: the full-screen title (and its arrow) only serves the first view -----
+// Once the visitor has scrolled down and stopped, the empty title space folds away, and the page is nudged by the same
+// amount so nothing appears to move.
+(function () {
+  const head = document.querySelector("#party .sec-head");
+  const anchor = document.querySelector("#party .party-subhead");
+  if (!head || !anchor) return;
+  let timer;
+  function collapse() {
+    if (head.classList.contains("is-collapsed")) return;
+    const before = anchor.getBoundingClientRect().top;
+    head.classList.add("is-collapsed");
+    const shift = before - anchor.getBoundingClientRect().top;
+    if (shift) window.scrollTo({ top: window.scrollY - shift, behavior: "instant" });
+  }
+  window.addEventListener("scroll", () => {
+    clearTimeout(timer);
+    if (window.scrollY > 120) timer = setTimeout(collapse, 250);
+  }, { passive: true });
+})();
