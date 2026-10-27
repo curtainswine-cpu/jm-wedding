@@ -963,3 +963,6 @@ html { scroll-behavior: smooth; }
 .party-grid--solo .party-photo img[alt="Kirsten"] { aspect-ratio: 9 / 14; object-fit: cover; object-position: center 46%; }
 /* the best man's photo gets a light trim from the sides (about 6% each): 7:8 instead of his original square, so his head and the glasses stay in */
 .party-grid--solo .party-photo img[alt="Eliot"] { aspect-ratio: 7 / 8; object-fit: cover; object-position: 50% 50%; }
+/* menu hover underline: grows outward from the middle of the word, rather than sweeping in from the left */
+nav a::after { left: 50%; transform: translateX(-50%); }
+@media (max-width: 640px) { nav a::after { left: 50%; } }
