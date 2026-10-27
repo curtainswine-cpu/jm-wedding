@@ -970,3 +970,5 @@ nav a::after { left: 50%; transform: translateX(-50%); }
 nav a.active:hover::after, nav a.active:focus-visible::after { width: calc(100% - 28px); }
 nav a:focus-visible::after { width: calc(100% - 28px); }
 @media (max-width: 640px) { nav a.active:hover::after, nav a:focus-visible::after { width: calc(100% - 18px); } }
+/* the "tap a card" note under the place cards: clear space above it */
+.sec-intro.place-hint { margin-top: 52px; margin-bottom: 0; font-size: 12.5px; letter-spacing: .06em; color: var(--grey); }
