@@ -443,7 +443,7 @@ html:not(.design-mode) .font-switcher { display: none; }
   --paper: #fffdf9;                         /* warm paper white, a touch lighter than the page */
   --frame: #14110f;                         /* black detailing */
   --fi: calc(var(--r) + 12px);              /* inset of the outer frame line from the card edge */
-  --g: 5px;                                 /* gap between the double rules */
+  --g: 4px;                                 /* gap between the double rules */
   position: relative;
   max-width: 620px; margin: 0 auto;         /* portrait invitation */
   padding: calc(64px + var(--r)) calc(clamp(28px, 8vw, 62px) + var(--r)) calc(60px + var(--r));
@@ -459,8 +459,8 @@ html:not(.design-mode) .font-switcher { display: none; }
   /* A fine black outline hugging the scalloped edge (four 1px offset shadows = a 1px dilation of
      the shape), then a soft shadow. drop-shadow (not box-shadow) so both follow the scallops. */
   filter:
-    drop-shadow(1px 0 0 var(--frame)) drop-shadow(-1px 0 0 var(--frame))
-    drop-shadow(0 1px 0 var(--frame)) drop-shadow(0 -1px 0 var(--frame))
+    drop-shadow(.5px 0 0 var(--frame)) drop-shadow(-.5px 0 0 var(--frame))
+    drop-shadow(0 .5px 0 var(--frame)) drop-shadow(0 -.5px 0 var(--frame))
     drop-shadow(0 18px 24px rgba(20,17,15,.15));
 }
 /* BLACK double rule, inset like a printed invitation (clear of the scallops):
@@ -468,8 +468,8 @@ html:not(.design-mode) .font-switcher { display: none; }
 .invite-card::before, .invite-card::after {
   content: ""; position: absolute; pointer-events: none;
 }
-.invite-card::before { inset: var(--fi); border: 2px solid var(--frame); }
-.invite-card::after  { inset: calc(var(--fi) + var(--g)); border: 1px solid var(--frame); }
+.invite-card::before { inset: var(--fi); border: 1px solid var(--frame); }
+.invite-card::after  { inset: calc(var(--fi) + var(--g)); border: 1px solid rgba(20,17,15,.55); }
 
 /* Notched corners (echoing the monogram's notched frame): each corner is cut out of the two lines
    with masks, and a matching pair of curved strokes (SVG, below) is drawn in the gap. */
@@ -932,15 +932,22 @@ nav a.active::after { width: 0; }
 .party-lead { text-align: center; font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; font-size: clamp(19px, 2.6vw, 23px); letter-spacing: .02em; color: var(--grey); margin: -14px auto 0; max-width: 28ch; line-height: 1.45; }
 /* the arrow under the Wedding Party title is a button: it scrolls smoothly down to the first photo */
 html { scroll-behavior: smooth; }
-.party-subhead { scroll-margin-top: 150px; }
+#maid-of-honour { scroll-margin-top: clamp(10px, calc(100vh - 780px), 150px); scroll-margin-top: clamp(10px, calc(100svh - 780px), 150px); }
 .party-cue { position: absolute; left: 50%; bottom: 14px; width: 54px; height: 54px; margin-left: -27px; display: flex; align-items: center; justify-content: center; color: var(--ink); border-radius: 50%; transition: background-color .3s; }
 .party-cue svg { opacity: .75; animation: partyNudge 2.6s ease-in-out infinite; transition: opacity .3s; }
 .party-cue:hover, .party-cue:focus-visible { background: #f4efe7; outline: none; }
 .party-cue:hover svg, .party-cue:focus-visible svg { opacity: 1; }
-/* single-person cards stay wide; only the PHOTO is limited to the screen height (it crops a little), so the whole picture is on screen after the scroll */
-.party-grid--solo .party-card { flex: 0 1 460px; max-width: 460px; }
-.party-grid--solo .party-photo { aspect-ratio: auto; height: clamp(300px, calc(100vh - 300px), 580px); height: clamp(300px, calc(100svh - 300px), 580px); }
 /* after the first scroll the empty title screen folds away */
 #party .sec-head.is-collapsed { min-height: 0; padding-bottom: 0; }
 #party .sec-head.is-collapsed .party-cue { display: none; }
 #party .sec-head.is-collapsed .party-lead { display: none; }
+/* when the menu fits on one row (about 72px tall) the first block only needs a little space under it */
+@media (min-width: 900px) {
+  main.sub > .sec:first-child,
+  main.sub > .rsvp-backdrop:first-child { padding-top: 104px; }
+  #party .sec-head { min-height: calc(100vh - 104px); min-height: calc(100svh - 104px); }
+}
+/* Maid of Honour and Best Man: the photo is shown WHOLE, in its own proportions (never cropped), centred above a wider write-up */
+.party-grid--solo .party-card { flex: 0 1 440px; max-width: 440px; }
+.party-grid--solo .party-photo { aspect-ratio: auto; width: auto; max-width: 100%; display: block; margin: 0 auto; width: fit-content; line-height: 0; background: none; }
+.party-grid--solo .party-photo img { position: static; inset: auto; transform: none; width: auto; height: auto; max-width: 100%; max-height: min(676px, calc(100vh - 120px)); max-height: min(676px, calc(100svh - 120px)); object-fit: contain; display: block; }
