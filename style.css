@@ -957,3 +957,5 @@ html { scroll-behavior: smooth; }
   .party-grid--solo .party-photo { flex: 0 1 auto; margin: 0; max-width: 46%; }
   .party-grid--solo .party-text { flex: 1 1 0; min-width: 0; margin-top: 0; }
 }
+/* soft rounded corners on the wedding party photos, to match the rounded write-up frames */
+.party-photo { border-radius: 24px; overflow: hidden; }
